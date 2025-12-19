@@ -1,0 +1,1352 @@
+/* ================================
+   CENTRALIZAR CAMPO (INPUT)
+================================ */
+.ipd-calc-box .wpforms-field input {
+  display: block;
+  margin: 0 auto;
+  max-width: 280px;
+  text-align: center;
+}
+
+/* ================================
+   CENTRALIZAR CHECKBOX
+================================ */
+.ipd-calc-box .wpforms-field-checkbox ul {
+  display: flex;
+  justify-content: center;
+}
+
+.ipd-calc-box .wpforms-field-checkbox li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* =====================================================
+   HERO BASE
+===================================================== */
+.ipd-hero {
+  position: relative;
+  width: 100vw;
+  min-height: 100vh;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* =====================================================
+   BACKGROUND
+===================================================== */
+.ipd-hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.ipd-hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* =====================================================
+   OVERLAY
+===================================================== */
+.ipd-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(30, 35, 75, 0.65);
+  z-index: 2;
+}
+
+/* =====================================================
+   HEADER
+===================================================== */
+.ipd-header--inside-hero {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+  z-index: 4;
+}
+
+.ipd-header__inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 28px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ipd-header__logo img {
+  height: 44px;
+}
+
+.ipd-header__nav {
+  display: flex;
+  gap: 40px;
+}
+
+.ipd-header__nav a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.ipd-header__actions {
+  display: flex;
+  gap: 16px;
+}
+
+/* =====================================================
+   BOTÕES
+===================================================== */
+.ipd-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 22px;
+  border-radius: 999px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.ipd-btn--primary {
+  background: #ffffff;
+  color: #F08723;
+}
+
+/* =====================================================
+   HEADER MOBILE – SIMPLIFICADO
+===================================================== */
+@media (max-width: 768px) {
+
+  /* estrutura geral */
+  .ipd-header--inside-hero {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: none;
+    width: 100%;
+  }
+
+  .ipd-header__inner {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 16px;
+    gap: 12px;
+  }
+
+  /* logo central */
+  .ipd-header__logo img {
+    height: 38px;
+  }
+
+  /* esconder menu */
+  .ipd-header__nav {
+    display: none;
+  }
+
+  /* ações */
+  .ipd-header__actions {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  /* esconder botão "Como chegar?" */
+  .ipd-header__actions a:first-child {
+    display: none;
+  }
+
+  /* botão de orçamento – menor e central */
+  .ipd-header__actions a:last-child {
+    font-size: 14px;
+    padding: 10px 18px;
+    border-radius: 999px;
+    background: #ffffff;
+    color: #F08723;
+    box-shadow: 0 6px 18px rgba(240, 135, 35, 0.35);
+  }
+}
+
+
+/* =====================================================
+   CONTEÚDO HERO
+===================================================== */
+.ipd-hero-content {
+  position: relative;
+  z-index: 3;
+  max-width: 1200px;
+  width: 100%;
+  padding: 0 24px;
+  text-align: center;
+  margin-top: 160px;
+}
+
+/* FRASE */
+.ipd-hero-title {
+  font-size: 64px;
+  font-weight: 500;
+  color: #ffffff;
+}
+
+.ipd-hero-title--center {
+  margin-bottom: 56px;
+}
+
+/* =====================================================
+   GRID
+===================================================== */
+.ipd-hero-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.ipd-hero-left {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.ipd-hero-right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* =====================================================
+   CARD
+===================================================== */
+.ipd-hero-card {
+  background: #1E234B;
+  padding: 48px;
+  border-radius: 18px;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.45);
+}
+
+.ipd-hero-card p {
+  color: #fff;
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 28px;
+}
+
+.ipd-hero-btn {
+  display: inline-flex;
+  background: #F08723;
+  color: #fff;
+  padding: 14px 36px;
+  border-radius: 999px;
+  text-decoration: none;
+}
+
+/* =====================================================
+   FORM
+===================================================== */
+.ipd-calc-box {
+  background: #fff;
+  border-radius: 20px;
+  padding: 32px 28px;
+  max-width: 380px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.45);
+}
+
+.ipd-calc-box h3 {
+  color: #091844;
+}
+
+.ipd-calc-sub {
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.ipd-calc-main-btn {
+  display: block;
+  background: #F08723;
+  color: #fff;
+  padding: 16px;
+  border-radius: 999px;
+  margin-bottom: 18px;
+  text-decoration: none;
+}
+
+.ipd-calc-divider {
+  font-size: 13px;
+  margin: 16px 0;
+}
+
+.ipd-calc-form {
+  display: flex;
+  gap: 8px;
+}
+
+.ipd-calc-form input {
+  flex: 1;
+  padding: 12px;
+  border-radius: 999px;
+  border: 1px solid #ddd;
+}
+
+.ipd-calc-form button {
+  background: #1E234B;
+  color: #fff;
+  border: none;
+  padding: 12px 16px;
+  border-radius: 999px;
+}
+
+.ipd-calc-phone {
+  margin-top: 10px;
+}
+
+.ipd-calc-phone strong {
+  font-size: 20px;
+}
+
+.ipd-calc-legal {
+  font-size: 11px;
+  color: #777;
+}
+
+/* =====================================================
+   RESPONSIVO
+===================================================== */
+@media (max-width: 992px) {
+
+  .ipd-header__nav {
+    display: none;
+  }
+
+  .ipd-hero-title {
+    font-size: 40px;
+  }
+
+  .ipd-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .ipd-hero-left,
+  .ipd-hero-right {
+    justify-content: center;
+  }
+}
+
+
+/* ===== ARTICLE SECTION ===== */
+.ipd-article {
+  position: relative;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+
+  background-color: #1E234B; /* 🔥 cor solicitada */
+  padding: 80px 0;
+
+  display: flex;
+  justify-content: center;
+}
+
+/* container interno */
+.ipd-article-inner {
+  max-width: 1600px;
+  width: 100%;
+  padding: 0 40px;
+}
+
+/* conteúdo */
+.ipd-article-content {
+  display: flex;
+  justify-content: center;
+}
+
+/* texto */
+.ipd-article-text {
+  width: 60%;
+  font-size: 20px;
+  line-height: 1.6;
+  text-align: center;
+  color: #FFEDF7;
+}
+
+/* breakpoints iguais ao Mobirise */
+@media (max-width: 1440px) {
+  .ipd-article-text {
+    width: 80%;
+  }
+}
+
+@media (max-width: 992px) {
+  .ipd-article {
+    padding: 60px 0;
+  }
+
+  .ipd-article-text {
+    width: 100%;
+    font-size: 18px;
+  }
+}
+
+/* =====================================================
+   SERVIÇOS – 3 CARDS FIXOS (SEM CARROSSEL)
+   ===================================================== */
+
+.ipd-services {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+
+  background: #1E234B;
+  padding: 80px 64px;
+
+  display: flex;
+  gap: 48px;
+  box-sizing: border-box;
+}
+
+/* =====================================================
+   CARD
+   ===================================================== */
+.ipd-service-card {
+  flex: 1;
+  max-width: 100%;
+  display: flex;
+  height: 420px;
+
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+}
+
+/* =====================================================
+   CARD LARANJA (TEXTO)
+   ===================================================== */
+.ipd-card {
+  width: 50%;
+  background: #F08723;
+  padding: 48px 40px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.ipd-card h3 {
+  font-size: 28px;
+  font-weight: 500;
+  margin-bottom: 16px;
+  color: #ffffff;
+}
+
+.ipd-card p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #ffffff;
+  margin: 0;
+}
+
+/* =====================================================
+   IMAGEM
+   ===================================================== */
+.ipd-media {
+  width: 50%;
+  position: relative;
+  overflow: hidden;
+}
+
+.ipd-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* =====================================================
+   NÚMERO
+   ===================================================== */
+.ipd-number {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+
+  background: #ffffff;
+  color: #1E0A17;
+
+  padding: 10px 14px;
+  border-radius: 999px;
+
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* =====================================================
+   RESPONSIVO
+   ===================================================== */
+@media (max-width: 1200px) {
+  .ipd-services {
+    gap: 32px;
+    padding: 64px 32px;
+  }
+
+  .ipd-service-card {
+    height: 380px;
+  }
+}
+
+@media (max-width: 992px) {
+  .ipd-services {
+    flex-direction: column;
+    padding: 48px 24px;
+  }
+
+  .ipd-service-card {
+    flex-direction: column-reverse;
+    height: auto;
+  }
+
+  .ipd-card {
+    width: 100%;
+    padding: 32px 24px;
+  }
+
+  .ipd-media {
+    width: 100%;
+    height: 260px;
+  }
+}
+
+/* =====================================================
+   DIVI – REMOVE PADDING AUTOMÁTICO
+   ===================================================== */
+.et_pb_section {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* =====================================================
+   SEÇÃO FULL BLEED – MARGEM A MARGEM REAL
+   ===================================================== */
+.ipd-features-full {
+  background: #1E234B;
+  padding: 120px 0;
+
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+
+/* =====================================================
+   CONTAINER INTERNO – OCUPA TODA A LARGURA
+   ===================================================== */
+.ipd-features-inner {
+  width: 100%;
+  display: flex;
+  gap: 48px;
+  padding: 0 64px;
+  box-sizing: border-box;
+}
+
+/* =====================================================
+   CARD
+   ===================================================== */
+.ipd-feature-card {
+  flex: 1;
+  background: #F08723;
+  border-radius: 32px;
+  padding: 56px;
+  color: #ffffff;
+}
+
+/* =====================================================
+   BADGE
+   ===================================================== */
+.ipd-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #1E234B;
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 32px;
+}
+
+/* =====================================================
+   TÍTULO
+   ===================================================== */
+.ipd-feature-card h3 {
+  font-size: 36px;
+  margin-bottom: 24px;
+  color: #1E234B;
+}
+
+/* =====================================================
+   TEXTO
+   ===================================================== */
+.ipd-feature-card p {
+  font-size: 16px;
+  line-height: 1.7;
+  color: #ffffff;
+}
+
+/* =====================================================
+   RESPONSIVO
+   ===================================================== */
+@media (max-width: 1024px) {
+  .ipd-features-inner {
+    flex-direction: column;
+    padding: 0 24px;
+  }
+
+  .ipd-feature-card {
+    padding: 40px;
+  }
+}
+
+/* =====================================================
+   DIVI – REMOVE ESPAÇOS AUTOMÁTICOS
+   ===================================================== */
+.et_pb_section {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* ===============================
+   HERO FULL BLEED – ISOLADO
+================================ */
+.ipd-hero-bleed {
+  position: relative;
+
+  width: 100vw;
+  height: 650px;
+
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+
+  overflow: hidden;
+}
+
+/* ===============================
+   BACKGROUND IMAGE
+================================ */
+.ipd-hero-bleed__bg {
+  position: absolute;
+  inset: 0;
+
+  background-image: url("http://ipdetroit.com/wp-content/uploads/2025/12/photo-1520697830682-bbb6e85e2b0b.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  z-index: 1;
+}
+
+/* ===============================
+   OVERLAY AZUL
+================================ */
+.ipd-hero-bleed__overlay {
+  position: absolute;
+  inset: 0;
+
+  background: rgba(30, 35, 75, 0.65); /* #1E234B */
+  z-index: 2;
+}
+
+/* ===============================
+   CONTEÚDO (FUTURO)
+================================ */
+.ipd-hero-bleed__content {
+  position: relative;
+  z-index: 3;
+
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ===============================
+   RESPONSIVO
+================================ */
+@media (max-width: 992px) {
+  .ipd-hero-bleed {
+    height: 350px;
+  }
+}
+
+/* ===============================
+   DIVI – REMOVE ESPAÇOS AUTOMÁTICOS
+   (limitado ao hero para não afetar outras seções)
+================================ */
+.ipd-hero-bleed.et_pb_section {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* =====================================
+   GALLERY FULL BLEED – MARGEM A MARGEM
+===================================== */
+.ipd-gallery-full {
+  position: relative;
+
+  width: 100vw;
+  padding: 120px 64px;
+
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+
+  background: #1E234B;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* Overlay opcional */
+.ipd-gallery-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.15);
+  z-index: 1;
+}
+
+/* GRID PRINCIPAL */
+.ipd-gallery-grid {
+  position: relative;
+  z-index: 2;
+
+  display: grid;
+  grid-template-columns: 5fr 4fr 3fr;
+  gap: 26px;
+  align-items: start;
+}
+
+/* IMAGENS */
+.ipd-gallery-col img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+
+  /* 🔥 BORDER RADIUS APLICADO */
+  border-radius: 28px;
+
+  /* garante que o radius funcione corretamente */
+  overflow: hidden;
+}
+
+/* ALTURAS + DESNÍVEIS */
+.col-1 img {
+  height: 595px;
+}
+
+.col-2 {
+  margin-top: 270px;
+}
+.col-2 img {
+  height: 590px;
+}
+
+.col-3 {
+  margin-top: 140px;
+}
+.col-3 img {
+  height: 460px;
+}
+
+/* =====================================
+   RESPONSIVO
+===================================== */
+@media (max-width: 992px) {
+  .ipd-gallery-full {
+    padding: 60px 24px;
+  }
+
+  .ipd-gallery-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .col-1 img,
+  .col-2 img,
+  .col-3 img {
+    height: 350px;
+    border-radius: 20px; /* reduz no mobile */
+  }
+
+  .col-2,
+  .col-3 {
+    margin-top: 0;
+  }
+}
+
+/* =====================================
+   DIVI – REMOVE PADDING AUTOMÁTICO
+   (limitado a esta seção)
+===================================== */
+.ipd-gallery-full.et_pb_section {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* =====================================
+   IPDETROIT • SEÇÃO TEXTO ANIMADO
+   Cores invertidas (BG laranja / texto azul)
+   ===================================== */
+
+.ipd-marquee-section {
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  background-color: #F08723; /* 🟠 LARANJA */
+  overflow: hidden;
+  padding: 40px 0;
+  position: relative;
+}
+
+/* Container do marquee */
+.ipd-marquee {
+  display: flex;
+  width: max-content;
+  align-items: center;
+  animation: ipd-marquee-left 25s linear infinite;
+}
+
+/* Texto animado */
+.ipd-marquee span {
+  display: inline-block;
+  white-space: nowrap;
+  font-size: clamp(1.2rem, 3vw, 2.4rem);
+  font-weight: 600;
+  line-height: 1.35;
+  color: #1E234B; /* 🔵 AZUL */
+  padding: 0 3rem;
+}
+
+/* Animação */
+@keyframes ipd-marquee-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* ===============================
+   RESPONSIVO
+   =============================== */
+
+@media (max-width: 768px) {
+  .ipd-marquee-section {
+    padding: 28px 0;
+  }
+
+  .ipd-marquee span {
+    font-size: 1.2rem;
+    line-height: 1.4;
+    padding: 0 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .ipd-marquee-section {
+    padding: 24px 0;
+  }
+
+  .ipd-marquee span {
+    font-size: 1.05rem;
+  }
+}
+
+/* ===== SEÇÃO GERAL ===== */
+.ipd-clientes {
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  background: #1E234B;
+  padding: 100px 0;
+}
+
+/* ===== CONTAINER INTERNO ===== */
+.ipd-clientes__inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ===== TÍTULO ===== */
+.ipd-clientes__title {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.ipd-clientes__label {
+  display: inline-block;
+  margin-bottom: 16px;
+  color: #F08723;
+  font-weight: 600;
+}
+
+.ipd-clientes__title h2 {
+  color: #ffffff;
+  font-size: 42px;
+  margin-bottom: 16px;
+}
+
+.ipd-clientes__title p {
+  color: #e0e0e0;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+/* ===== GRID ===== */
+.ipd-clientes__grid {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+/* ===== LINHAS ===== */
+.ipd-clientes__row {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: nowrap;
+}
+
+/* ===== CARD ===== */
+.ipd-clientes__card {
+  background: #ffffff;
+  width: 220px;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.ipd-clientes__card img {
+  max-width: 80%;
+  max-height: 80%;
+  object-fit: contain;
+}
+
+/* ===== HOVER ===== */
+.ipd-clientes__card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.25);
+}
+
+/* ===== RESPONSIVO ===== */
+@media (max-width: 1200px) {
+  .ipd-clientes__row {
+    flex-wrap: wrap;
+  }
+}
+
+/* =====================================================
+   SEÇÃO PROJETOS – FULL BLEED
+===================================================== */
+.ipd-projetos {
+  position: relative;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  min-height: 100vh;
+  overflow: hidden;
+  color: #ffffff;
+}
+
+/* =====================================================
+   BACKGROUND
+===================================================== */
+.ipd-projetos__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.ipd-projetos__bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ipd-projetos__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(30,35,75,0.95),
+    rgba(30,35,75,0.82)
+  );
+}
+
+/* =====================================================
+   CONTAINER
+===================================================== */
+.ipd-projetos__container {
+  position: relative;
+  z-index: 2;
+
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 80px;
+
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 140px 24px;
+}
+
+/* =====================================================
+   INTRO (STICKY DO INÍCIO AO FIM)
+===================================================== */
+.ipd-projetos__intro {
+  position: sticky;
+  top: 120px;
+  align-self: flex-start;
+}
+
+.ipd-projetos__intro h2 {
+  font-size: 56px;
+  margin-bottom: 24px;
+  color: #ffffff; /* 🔥 branco */
+}
+
+.ipd-projetos__intro p {
+  font-size: 18px;
+  margin-bottom: 32px;
+  color: #e2e6ff;
+  max-width: 360px;
+}
+
+/* =====================================================
+   BOTÃO
+===================================================== */
+.ipd-btn {
+  display: inline-block;
+  padding: 14px 28px;
+  background: #F08723;
+  color: #ffffff;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  box-shadow: 0 10px 30px rgba(240,135,35,0.35);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.ipd-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 36px rgba(240,135,35,0.45);
+}
+
+/* =====================================================
+   CARDS (LARANJA + MAIS ESPAÇO)
+===================================================== */
+.ipd-projetos__cards {
+  display: flex;
+  flex-direction: column;
+  gap: 72px; /* 🔥 mais espaçado */
+}
+
+.ipd-projeto-card {
+  background: #F08723;
+  padding: 44px;
+  border-radius: 26px;
+  box-shadow: 0 20px 44px rgba(0,0,0,0.35);
+}
+
+/* =====================================================
+   TOPO DO CARD
+===================================================== */
+.ipd-projeto-card__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 28px;
+}
+
+.ipd-projeto-card__top img {
+  width: 170px;
+  height: 210px;
+  object-fit: cover;
+  border-radius: 18px;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.35);
+}
+
+/* =====================================================
+   LABELS
+===================================================== */
+.ipd-label {
+  display: inline-flex;
+  align-items: center;
+  color:#fff;
+  gap: 8px;
+  padding: 8px 18px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.ipd-label svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+    color:#fff;
+
+}
+
+.ipd-label--azul {
+  background: #091844;
+  color: #ffffff;
+}
+
+/* =====================================================
+   TEXTO DOS CARDS
+===================================================== */
+.ipd-projeto-card h3 {
+  font-size: 28px;
+  margin-bottom: 16px;
+  color: #091844;
+}
+
+.ipd-projeto-card p {
+  color: #2b2b2b;
+  line-height: 1.6;
+}
+
+/* =====================================================
+   RESPONSIVO
+===================================================== */
+@media (max-width: 992px) {
+  .ipd-projetos__container {
+    grid-template-columns: 1fr;
+    padding: 80px 16px;
+  }
+
+  .ipd-projetos__intro {
+    position: relative;
+    top: auto;
+    margin-bottom: 48px;
+  }
+
+  .ipd-projeto-card__top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+}
+
+/* ===== FORÇA TEXTO DO LABEL SEMPRE BRANCO ===== */
+.ipd-label,
+.ipd-label span,
+.ipd-label--azul,
+.ipd-label--azul span {
+  color: #ffffff !important;
+}
+
+/* Garante ícones SVG brancos */
+.ipd-label svg {
+  fill: #ffffff !important;
+  color: #ffffff !important;
+}
+
+.container-cta {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center; /* centraliza horizontalmente */
+  align-items: center;     /* centraliza verticalmente */
+  text-align: center;
+}
+
+.container-cta-2 {
+  margin-top: 50px;
+  display: flex;
+  text-align: center;
+}
+
+/* ================= FUNDO GERAL ================= */
+.ipd-plans-bleed {
+  background: #1E234B;
+  padding: 120px 0;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+
+/* ================= CONTAINER ================= */
+.ipd-plans-wrap {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 48px;
+  color: #ffffff;
+}
+
+/* ================= TÍTULO ================= */
+.ipd-plans-title {
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+.ipd-plans-title h2 {
+  font-size: 42px;
+  color: #F08723;
+}
+
+.ipd-plans-title p {
+  color: #cfd6f1;
+}
+
+/* ================= SCROLL ================= */
+.ipd-table-scroll {
+  overflow-x: auto;
+}
+
+/* ================= TABELA ================= */
+/* ================= TABELA (SEM BORDA BRANCA) ================= */
+/* ===== TABELA IPD – SEM BORDA EXTERNA ===== */
+.ipd-plans-table {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+
+  background: #ffffff;      /* 🔒 mantém branco */
+  border: none !important;  /* 🔥 remove a borda */
+  outline: none !important; /* 🔥 garante */
+  border-radius: 18px;      /* mantém o arredondado */
+  overflow: hidden;         /* corta corretamente */
+}
+
+
+
+/* ================= LINHA TOP (TRANSPARENTE) ================= */
+.ipd-plans-top th {
+  background: #1E234B; /* 🔥 igual ao fundo */
+  border-bottom: none;
+  padding: 16px;
+}
+
+.featured-top {
+  text-align: center;
+}
+
+/* ================= BADGE ================= */
+.featured-badge {
+  display: inline-block;
+  background: #cfe3f7;
+  color: #1E234B;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 6px 18px;
+  border-radius: 8px;
+  text-transform: uppercase;
+}
+
+/* ================= CABEÇALHO ================= */
+.ipd-plans-table thead:last-of-type th {
+  background: #091844;
+  color: #ffffff;
+  border-bottom: none;
+}
+
+/* ================= CÉLULAS ================= */
+.ipd-plans-table th,
+.ipd-plans-table td {
+  padding: 18px 16px;
+  text-align: center;
+  font-size: 14px;
+  border-bottom: 1px solid #e6e9f2;
+}
+
+/* ================= COLUNAS ================= */
+.col-feature {
+  text-align: left !important;
+  width: 260px;
+  font-weight: 600;
+  color:#000;
+}
+
+.col-plan {
+  width: 180px;
+}
+
+/* ================= DESTAQUE IPD 2 ================= */
+.featured {
+  box-shadow: inset 0 0 0 2px rgba(240,135,35,0.35);
+}
+
+/* ================= ÍCONES ================= */
+.ok   { color: #22c55e; font-size: 18px; }
+.no   { color: #ef4444; font-size: 18px; }
+.info { color: #facc15; font-size: 18px; }
+
+/* ================= BOTÕES ================= */
+.ipd-btn-table {
+  display: inline-block;
+  background: #F08723;
+  color: #ffffff;
+  padding: 12px 28px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all .25s ease;
+  box-shadow: 0 8px 20px rgba(240,135,35,.35);
+}
+
+.ipd-btn-table:hover {
+  background: #ff9a3d;
+  transform: translateY(-2px);
+  box-shadow: 0 18px 36px rgba(246, 137, 42, 0.45);
+}
+
+/* ===============================
+   CTA ABAIXO DA TABELA
+================================ */
+.ipd-plans-cta {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+/* BOTÃO */
+.ipd-btn-plan {
+  background: #F6892A; /* laranja IPDetroit */
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 16px 36px;
+  border-radius: 999px;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  box-shadow: 0 12px 28px rgba(246, 137, 42, 0.35);
+}
+
+/* HOVER */
+.ipd-btn-plan:hover {
+  background: #ff9a3d;
+  transform: translateY(-2px);
+  box-shadow: 0 18px 36px rgba(246, 137, 42, 0.45);
+}
+
+
+/* ================= RESPONSIVO ================= */
+@media (max-width: 992px) {
+  .ipd-plans-wrap {
+    padding: 0 24px;
+  }
+
+  .ipd-plans-title h2 {
+    font-size: 32px;
+  }
+}
