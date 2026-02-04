@@ -1,0 +1,1181 @@
+<!-- =====================================================
+IPDETROIT • HOME (PÁGINA PRINCIPAL • CÓDIGO COMPLETO)
+AJUSTES:
+- “CALCULE AGORA” -> rola para o form no banner (#ipd-calc)
+- sem embed de mapa (remove “Abrir em Tela Cheia”)
+- TODOS WhatsApp -> https://wa.link/6wkuhz
+===================================================== -->
+
+<style>
+/* ===== RESET / ANTI-OVERFLOW ===== */
+html, body{
+  width:100%;
+  max-width:100%;
+  overflow-x:hidden;
+}
+@supports (overflow: clip){
+  html, body{ overflow-x: clip; }
+}
+*,
+*::before,
+*::after{ box-sizing:border-box; }
+
+img, svg{
+  max-width:100%;
+  height:auto;
+  display:block;
+}
+
+/* rolagem suave p/ âncoras */
+html{ scroll-behavior:smooth; }
+
+/* ===== VARS ===== */
+:root{
+  --ipd-navy:#091844;
+  --ipd-navy2:#1E234B;
+  --ipd-orange:#F6892A;
+  --ipd-white:#FFFFFE;
+  --ipd-text:#e9eeff;
+}
+
+/* container padrão */
+.ipd-container{
+  width:100%;
+  max-width:1400px;
+  margin:0 auto;
+  padding:0 24px;
+}
+
+/* remove paddings automáticos do Divi nas seções */
+.et_pb_section{
+  padding-top:0 !important;
+  padding-bottom:0 !important;
+}
+
+/* =========================
+FULL BLEED FIX
+========================= */
+.ipd-hero,
+.ipd-article,
+.ipd-services,
+.ipd-features-full,
+.ipd-hero-bleed,
+.ipd-gallery-full,
+.ipd-marquee-section,
+.ipd-clientes,
+.ipd-projetos,
+.ipd-map{
+  position:relative;
+  width:100vw;
+  left:50%;
+  right:50%;
+  margin-left:-50vw;
+  margin-right:-50vw;
+  overflow-x:hidden;
+}
+
+/* ===== BOTÕES BASE ===== */
+.ipd-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  padding:12px 18px;
+  border-radius:999px;
+  font-weight:800;
+  text-decoration:none;
+  border:1px solid transparent;
+  line-height:1;
+  white-space:nowrap;
+  transition:transform .2s ease, filter .2s ease, background .2s ease, border-color .2s ease;
+}
+.ipd-btn--primary{
+  background:var(--ipd-white);
+  color:var(--ipd-orange);
+  box-shadow:0 10px 26px rgba(246,137,42,.22);
+}
+.ipd-btn--primary:hover{ transform:translateY(-1px); filter:brightness(.98); }
+
+.ipd-btn--ghost{
+  background:rgba(255,255,255,.08);
+  color:var(--ipd-white);
+  border-color:rgba(255,255,255,.18);
+  backdrop-filter: blur(8px);
+}
+.ipd-btn--ghost:hover{ background:rgba(255,255,255,.12); }
+
+.ipd-btn--orange{
+  background:var(--ipd-orange);
+  color:var(--ipd-white);
+  box-shadow:0 12px 28px rgba(246,137,42,.28);
+}
+.ipd-btn--orange:hover{ transform:translateY(-2px); filter:brightness(.96); }
+
+/* CTA compacto (pílula) */
+.ipd-btn--pill{
+  padding:10px 16px;
+  font-size:13px;
+  font-weight:900;
+}
+
+/* ===== HERO ===== */
+.ipd-hero{
+  min-height:100vh;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.ipd-hero-bg{ position:absolute; inset:0; z-index:1; }
+.ipd-hero-bg img{ width:100%; height:100%; object-fit:cover; }
+.ipd-hero-overlay{ position:absolute; inset:0; background:rgba(30,35,75,.65); z-index:2; }
+
+/* ===== HEADER ===== */
+.ipd-header--inside-hero{
+  position:absolute;
+  top:0;
+  left:50%;
+  transform:translateX(-50%);
+  width:100vw;
+  z-index:10;
+}
+.ipd-header__inner{
+  max-width:1400px;
+  margin:0 auto;
+  padding:26px 28px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+}
+.ipd-header__logo img{ height:44px; }
+.ipd-header__nav{
+  display:flex;
+  gap:34px;
+  flex-wrap:wrap;
+  justify-content:center;
+}
+.ipd-header__nav a{
+  color:var(--ipd-white);
+  text-decoration:none;
+  font-size:16px;
+  opacity:.92;
+  transition:opacity .2s ease, transform .2s ease;
+}
+.ipd-header__nav a:hover{ opacity:1; transform:translateY(-1px); }
+.ipd-header__actions{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+}
+
+/* header mobile */
+@media (max-width: 768px){
+  .ipd-header--inside-hero{ left:0; transform:none; width:100%; }
+  .ipd-header__inner{ flex-direction:column; padding:18px 16px; }
+  .ipd-header__nav{ display:none; }
+  .ipd-header__actions{ width:100%; justify-content:center; }
+  .ipd-header__actions a:first-child{ display:none; }
+}
+
+/* ===== HERO CONTENT ===== */
+.ipd-hero-content{
+  position:relative;
+  z-index:3;
+  width:100%;
+  max-width:1200px;
+  padding:0 24px;
+  text-align:center;
+  margin-top:150px;
+}
+.ipd-hero-title{
+  font-size:64px;
+  font-weight:500;
+  color:var(--ipd-white);
+  margin:0 0 22px;
+}
+@media (max-width:992px){
+  .ipd-hero-title{ font-size:40px; }
+}
+
+/* ===== SUBPAGES ===== */
+.ipd-subpages{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:14px;
+  margin: 0 auto 34px;
+  width:100%;
+}
+.ipd-subpages__btn{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  padding:16px 18px;
+  border-radius:18px;
+  text-decoration:none;
+  background:rgba(255,255,255,.10);
+  border:1px solid rgba(255,255,255,.18);
+  color:var(--ipd-white);
+  backdrop-filter: blur(10px);
+  transition: transform .2s ease, background .2s ease, border-color .2s ease;
+  min-height:76px;
+}
+.ipd-subpages__btn:hover{
+  transform:translateY(-2px);
+  background:rgba(255,255,255,.14);
+  border-color:rgba(246,137,42,.45);
+}
+.ipd-subpages__icon{
+  width:44px;
+  height:44px;
+  display:grid;
+  place-items:center;
+  border-radius:14px;
+  background:rgba(246,137,42,.18);
+  font-size:20px;
+}
+.ipd-subpages__text{
+  text-align:left;
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+  flex:1;
+  min-width:0;
+}
+.ipd-subpages__text strong{ font-size:15px; letter-spacing:.2px; }
+.ipd-subpages__text small{ font-size:12px; opacity:.85; }
+.ipd-subpages__arrow{ font-size:18px; opacity:.9; }
+@media (max-width: 992px){
+  .ipd-subpages{ grid-template-columns:1fr; }
+  .ipd-subpages__btn{ border-radius:16px; }
+}
+
+/* ===== HERO GRID ===== */
+.ipd-hero-grid{
+  display:grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap:40px;
+  align-items:center;
+}
+.ipd-hero-left{ display:flex; justify-content:flex-start; }
+.ipd-hero-right{ display:flex; justify-content:flex-end; }
+@media (max-width: 992px){
+  .ipd-hero-grid{ grid-template-columns:1fr; gap:26px; }
+  .ipd-hero-left, .ipd-hero-right{ justify-content:center; }
+}
+
+/* hero card */
+.ipd-hero-card{
+  background:var(--ipd-navy2);
+  padding:44px;
+  border-radius:18px;
+  box-shadow:0 30px 80px rgba(0,0,0,.45);
+  text-align:left;
+}
+.ipd-hero-card p{
+  color:var(--ipd-white);
+  font-size:18px;
+  line-height:1.6;
+  margin:0 0 22px;
+}
+
+/* CTA de seção */
+.ipd-section-cta{
+  margin-top:22px;
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+/* calc box */
+.ipd-calc-box{
+  background:var(--ipd-white);
+  border-radius:20px;
+  padding:30px 26px;
+  max-width:520px;
+  width:100%;
+  text-align:center;
+  box-shadow:0 30px 80px rgba(0,0,0,.45);
+}
+/* âncora: evita ficar por baixo do header ao rolar */
+#ipd-calc{ scroll-margin-top: 120px; }
+
+.ipd-calc-box h3{ color:var(--ipd-navy); margin:0 0 6px; }
+.ipd-calc-sub{ font-size:14px; margin:0 0 16px; color:#334; }
+
+/* shortcode wrapper */
+.ipd-calc-embed{ width:100%; display:flex; justify-content:center; }
+.ipd-calc-embed *{ max-width:100%; }
+
+/* mini-cta dentro do box */
+.ipd-mini-cta{
+  margin-top:14px;
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+/* ===== INTRO ===== */
+.ipd-article{
+  background:var(--ipd-navy2);
+  padding:70px 0;
+}
+.ipd-article-text{
+  width:min(980px, 100%);
+  margin:0 auto;
+  font-size:20px;
+  line-height:1.6;
+  text-align:center;
+  color:#FFEDF7;
+}
+@media (max-width: 992px){
+  .ipd-article{ padding:56px 0; }
+  .ipd-article-text{ font-size:18px; }
+}
+
+/* ===== SERVIÇOS (3 cards) ===== */
+.ipd-services{
+  background:var(--ipd-navy2);
+  padding:80px 64px;
+  display:flex;
+  gap:44px;
+}
+.ipd-service-card{
+  flex:1;
+  display:flex;
+  height:420px;
+  border-radius:28px;
+  overflow:hidden;
+  box-shadow:0 20px 60px rgba(0,0,0,.35);
+  min-width:0;
+}
+.ipd-card{
+  width:50%;
+  background:var(--ipd-orange);
+  padding:48px 40px;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  gap:14px;
+}
+.ipd-card h3{
+  font-size:28px;
+  font-weight:600;
+  margin:0;
+  color:var(--ipd-white);
+}
+.ipd-card p{
+  font-size:15px;
+  line-height:1.6;
+  color:var(--ipd-white);
+  margin:0;
+}
+.ipd-media{ width:50%; position:relative; overflow:hidden; }
+.ipd-media img{ width:100%; height:100%; object-fit:cover; }
+.ipd-number{
+  position:absolute;
+  top:16px;
+  right:16px;
+  background:var(--ipd-white);
+  color:#1E0A17;
+  padding:10px 14px;
+  border-radius:999px;
+  font-size:14px;
+  font-weight:900;
+}
+
+/* CTA dentro do card de serviço */
+.ipd-service-cta{
+  margin-top:10px;
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+@media (max-width: 1200px){
+  .ipd-services{ gap:28px; padding:64px 28px; }
+  .ipd-service-card{ height:380px; }
+}
+@media (max-width: 992px){
+  .ipd-services{ flex-direction:column; padding:48px 24px; }
+  .ipd-service-card{ flex-direction:column-reverse; height:auto; }
+  .ipd-card{ width:100%; padding:32px 24px; }
+  .ipd-media{ width:100%; height:260px; }
+}
+
+/* ===== 1) SOLUÇÕES ===== */
+.ipd-features-full{
+  background:var(--ipd-navy2);
+  padding:90px 0;
+}
+.ipd-features-inner{
+  display:flex;
+  gap:36px;
+  align-items:stretch;
+}
+.ipd-feature-card{
+  flex:1;
+  min-width:0;
+  background:var(--ipd-orange);
+  border-radius:32px;
+  padding:56px;
+  color:var(--ipd-white);
+  position:relative;
+}
+.ipd-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  background:var(--ipd-navy2);
+  color:var(--ipd-white);
+  padding:8px 16px;
+  border-radius:999px;
+  font-size:14px;
+  font-weight:900;
+  margin-bottom:26px;
+}
+.ipd-feature-card h3{
+  font-size:36px;
+  margin:0 0 18px;
+  color:var(--ipd-navy2);
+  font-weight:700;
+}
+.ipd-feature-card p{
+  font-size:16px;
+  line-height:1.75;
+  margin:0;
+  color:var(--ipd-white);
+}
+/* CTA no fim da seção soluções */
+.ipd-features-cta{
+  margin-top:28px;
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  flex-wrap:wrap;
+}
+@media (max-width: 1024px){
+  .ipd-features-inner{ flex-direction:column; }
+  .ipd-feature-card{ padding:40px; }
+}
+
+/* ===== 2) BANNER SEPARADOR ===== */
+.ipd-hero-bleed{ height:650px; overflow:hidden; }
+.ipd-hero-bleed__bg{
+  position:absolute;
+  inset:0;
+  background-image:url("http://ipdetroit.com/wp-content/uploads/2025/12/photo-1520697830682-bbb6e85e2b0b.jpeg");
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+}
+.ipd-hero-bleed__overlay{ position:absolute; inset:0; background:rgba(30,35,75,.65); }
+@media (max-width: 992px){
+  .ipd-hero-bleed{ height:350px; }
+}
+
+/* ===== 3) GALERIA ===== */
+.ipd-gallery-full{ background:var(--ipd-navy2); padding:110px 0; }
+.ipd-gallery-overlay{ position:absolute; inset:0; background:rgba(0,0,0,.15); pointer-events:none; }
+.ipd-gallery-grid{
+  position:relative;
+  z-index:2;
+  display:grid;
+  grid-template-columns: 5fr 4fr 3fr;
+  gap:26px;
+  align-items:start;
+}
+.ipd-gallery-col img{
+  width:100%;
+  object-fit:cover;
+  border-radius:28px;
+}
+.col-1 img{ height:595px; }
+.col-2{ margin-top:270px; }
+.col-2 img{ height:590px; }
+.col-3{ margin-top:140px; }
+.col-3 img{ height:460px; }
+@media (max-width: 992px){
+  .ipd-gallery-full{ padding:60px 0; }
+  .ipd-gallery-grid{ grid-template-columns:1fr; gap:16px; }
+  .col-1 img, .col-2 img, .col-3 img{ height:350px; border-radius:20px; }
+  .col-2, .col-3{ margin-top:0; }
+}
+
+/* ===== 4) MARQUEE ===== */
+.ipd-marquee-section{ background:var(--ipd-orange); overflow:hidden; padding:36px 0; }
+.ipd-marquee{
+  display:flex;
+  width:max-content;
+  align-items:center;
+  animation: ipd-marquee-left 25s linear infinite;
+}
+.ipd-marquee span{
+  display:inline-block;
+  white-space:nowrap;
+  font-size: clamp(1.2rem, 3vw, 2.4rem);
+  font-weight:900;
+  line-height:1.25;
+  color:var(--ipd-navy2);
+  padding:0 3rem;
+}
+@keyframes ipd-marquee-left{
+  0%{ transform:translateX(0); }
+  100%{ transform:translateX(-50%); }
+}
+@media (max-width: 768px){
+  .ipd-marquee-section{ padding:28px 0; }
+  .ipd-marquee span{ font-size:1.2rem; padding:0 2rem; }
+}
+
+/* ===== 5) CLIENTES ===== */
+.ipd-clientes{ background:var(--ipd-navy2); padding:95px 0; }
+.ipd-clientes__title{ text-align:center; margin-bottom:56px; }
+.ipd-clientes__label{ display:inline-block; margin-bottom:16px; color:var(--ipd-orange); font-weight:900; }
+.ipd-clientes__title h2{ color:var(--ipd-white); font-size:42px; margin:0 0 14px; }
+.ipd-clientes__title p{ color:#e0e0e0; max-width:720px; margin:0 auto; }
+.ipd-clientes__grid{ display:flex; flex-direction:column; gap:34px; }
+.ipd-clientes__row{ display:flex; justify-content:center; gap:26px; flex-wrap:nowrap; }
+.ipd-clientes__card{
+  background:var(--ipd-white);
+  width:220px;
+  height:140px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:18px;
+  box-shadow:0 12px 30px rgba(0,0,0,.15);
+  transition:transform .25s ease, box-shadow .25s ease;
+}
+.ipd-clientes__card img{ max-width:80%; max-height:80%; object-fit:contain; }
+.ipd-clientes__card:hover{ transform:translateY(-6px); box-shadow:0 18px 40px rgba(0,0,0,.25); }
+@media (max-width: 1200px){ .ipd-clientes__row{ flex-wrap:wrap; } }
+
+/* ===== 6/7) PROJETOS (NOVO LAYOUT DESKTOP) ===== */
+.ipd-projetos{ min-height:100vh; overflow:hidden; color:var(--ipd-white); }
+.ipd-projetos__bg{ position:absolute; inset:0; z-index:0; }
+.ipd-projetos__bg img{ width:100%; height:100%; object-fit:cover; }
+.ipd-projetos__overlay{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg, rgba(30,35,75,.95), rgba(30,35,75,.82));
+}
+
+/* container vira grid com áreas */
+.ipd-projetos__container{
+  position:relative;
+  z-index:2;
+  display:grid;
+  grid-template-columns: 1fr 1.1fr;
+  grid-template-areas:
+    "introL leilao"
+    "escola ecommerce"
+    "studio introR";
+  gap:44px;
+  padding:120px 24px;
+  align-items:stretch;
+}
+
+/* resumo (intro) base */
+.ipd-projetos__intro{
+  background:rgba(9,24,68,.22);
+  border:1px solid rgba(255,255,255,.10);
+  backdrop-filter: blur(10px);
+  border-radius:26px;
+  padding:44px;
+  box-shadow:0 20px 44px rgba(0,0,0,.25);
+}
+.ipd-projetos__intro h2{ font-size:56px; margin:0 0 20px; color:var(--ipd-white); }
+.ipd-projetos__intro p{ font-size:18px; margin:0 0 18px; color:#e2e6ff; max-width:520px; }
+
+/* posicionamento das áreas */
+.ipd-projetos__intro--left{ grid-area:introL; }
+.ipd-projetos__intro--right{ grid-area:introR; }
+
+.ipd-projeto--leilao{ grid-area:leilao; }
+.ipd-projeto--escola{ grid-area:escola; }
+.ipd-projeto--ecommerce{ grid-area:ecommerce; }
+.ipd-projeto--studio{ grid-area:studio; }
+
+/* cards (mantém visual padrão) */
+.ipd-projeto-card{
+  background:var(--ipd-orange);
+  padding:44px;
+  border-radius:26px;
+  box-shadow:0 20px 44px rgba(0,0,0,.35);
+  min-width:0;
+  height:100%;
+}
+.ipd-projeto-card__top{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  gap:16px;
+  margin-bottom:26px;
+}
+.ipd-projeto-card__top img{
+  width:170px;
+  height:210px;
+  object-fit:cover;
+  border-radius:18px;
+  box-shadow:0 12px 28px rgba(0,0,0,.35);
+}
+.ipd-label, .ipd-label *{ color:#fff !important; }
+.ipd-label{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:8px 18px;
+  border-radius:999px;
+  font-size:13px;
+  font-weight:900;
+}
+.ipd-label--azul{ background:var(--ipd-navy); color:#fff !important; }
+
+.ipd-projeto-card h3{
+  font-size:28px;
+  margin:0 0 12px;
+  color:var(--ipd-white);
+  font-weight:900;
+  letter-spacing:.2px;
+  text-shadow:0 2px 10px rgba(0,0,0,.20);
+}
+.ipd-projeto-card p{
+  margin:0 0 16px;
+  color:rgba(255,255,255,.92);
+  line-height:1.75;
+  text-shadow:0 2px 10px rgba(0,0,0,.18);
+}
+
+@media (max-width: 992px){
+  .ipd-projetos__container{
+    grid-template-columns:1fr;
+    grid-template-areas:
+      "introL"
+      "leilao"
+      "escola"
+      "ecommerce"
+      "studio";
+    gap:26px;
+    padding:80px 16px;
+  }
+  .ipd-projetos__intro h2{ font-size:40px; }
+  .ipd-projetos__intro--right{ display:none; }
+  .ipd-projeto-card__top{ flex-direction:column; align-items:flex-start; }
+}
+
+/* ===== MAPA (SEM IFRAME) ===== */
+.ipd-map{
+  background:var(--ipd-navy2);
+  padding:90px 0;
+}
+.ipd-map__wrap{
+  display:grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap:34px;
+  align-items:stretch;
+}
+.ipd-map__card{
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:26px;
+  padding:44px;
+  backdrop-filter: blur(10px);
+  box-shadow:0 20px 44px rgba(0,0,0,.25);
+}
+.ipd-map__card h2{
+  margin:0 0 14px;
+  color:var(--ipd-white);
+  font-size:42px;
+}
+.ipd-map__card p{
+  margin:0 0 16px;
+  color:#e2e6ff;
+  line-height:1.7;
+}
+.ipd-map__info{
+  background:var(--ipd-white);
+  color:#111;
+  border-radius:26px;
+  padding:34px;
+  box-shadow:0 20px 44px rgba(0,0,0,.25);
+}
+.ipd-map__info h3{ margin:0 0 10px; color:var(--ipd-navy); }
+.ipd-map__info p{ margin:0 0 14px; color:#223; line-height:1.6; }
+.ipd-map__actions{ display:flex; gap:10px; flex-wrap:wrap; margin-top:10px; }
+
+@media (max-width: 992px){
+  .ipd-map__wrap{ grid-template-columns:1fr; }
+  .ipd-map__card h2{ font-size:34px; }
+}
+
+/* =====================================================
+HOTFIX MOBILE — SOMENTE HERO LEFT + HERO RIGHT
+===================================================== */
+@media (max-width: 768px){
+  .ipd-hero-grid{
+    width:100%;
+    max-width:100%;
+  }
+  .ipd-hero-left,
+  .ipd-hero-right{
+    width:100%;
+    max-width:100%;
+    min-width:0;
+  }
+
+  .ipd-hero-card{
+    width:100%;
+    max-width:100%;
+    min-width:0;
+    overflow:hidden;
+  }
+
+  .ipd-calc-box{
+    width:100%;
+    max-width:100%;
+    min-width:0;
+    overflow:hidden;
+  }
+
+  .ipd-calc-embed{
+    width:100%;
+    max-width:100%;
+    display:block;
+    min-width:0;
+  }
+
+  .ipd-calc-embed *{
+    max-width:100% !important;
+    min-width:0 !important;
+    box-sizing:border-box;
+  }
+
+  .ipd-calc-box input,
+  .ipd-calc-box select,
+  .ipd-calc-box textarea,
+  .ipd-calc-box button{
+    max-width:100% !important;
+    box-sizing:border-box;
+  }
+
+  .ipd-calc-box [class*="step"],
+  .ipd-calc-box [class*="tabs"],
+  .ipd-calc-box [class*="nav"],
+  .ipd-calc-box [class*="progress"]{
+    flex-wrap:wrap !important;
+    max-width:100% !important;
+    min-width:0 !important;
+  }
+}
+</style>
+
+<!-- =========================
+IPDETROIT • HOME (HTML)
+========================= -->
+
+<section class="ipd-hero" id="home">
+
+  <!-- BACKGROUND -->
+  <div class="ipd-hero-bg" aria-hidden="true">
+    <img src="http://ipdetroit.com/wp-content/uploads/2025/12/photo-1529265895721-65945a176cff-1.jpeg" alt="IPDetroit">
+    <div class="ipd-hero-overlay"></div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="ipd-header ipd-header--inside-hero">
+    <div class="ipd-header__inner">
+
+      <div class="ipd-header__logo">
+        <a href="#home" aria-label="Voltar ao topo">
+          <img src="http://ipdetroit.com/wp-content/uploads/2025/10/Ativo-23.png" alt="IPDetroit">
+        </a>
+      </div>
+
+      <nav class="ipd-header__nav" aria-label="Navegação">
+        <a href="#servicos">Serviços</a>
+        <a href="#solucoes">Soluções</a>
+        <a href="#galeria">Galeria</a>
+        <a href="#clientes">Clientes</a>
+        <a href="#projetos">Projetos</a>
+      </nav>
+
+      <div class="ipd-header__actions">
+        <a href="#map" class="ipd-btn ipd-btn--ghost">→ Como chegar?</a>
+        <a href="https://wa.link/6wkuhz" class="ipd-btn ipd-btn--primary" target="_blank" rel="noopener">→ Solicitar Orçamento</a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- CONTEÚDO -->
+  <div class="ipd-hero-content">
+
+    <h1 class="ipd-hero-title ipd-hero-title--center">
+      Seu Mundo, Nosso Escudo
+    </h1>
+
+    <!-- BOTÕES GRANDES (SUBPÁGINAS) -->
+    <div class="ipd-subpages" aria-label="Acessos rápidos">
+      <a class="ipd-subpages__btn" href="https://ipdetroit.com/cftv/">
+        <span class="ipd-subpages__icon" aria-hidden="true">📷</span>
+        <span class="ipd-subpages__text">
+          <strong>CFTV Profissional</strong>
+          <small>Ver planos e detalhes</small>
+        </span>
+        <span class="ipd-subpages__arrow" aria-hidden="true">→</span>
+      </a>
+
+      <a class="ipd-subpages__btn" href="https://ipdetroit.com/automacao/">
+        <span class="ipd-subpages__icon" aria-hidden="true">⚡</span>
+        <span class="ipd-subpages__text">
+          <strong>Automação</strong>
+          <small>Portões, acesso e controle</small>
+        </span>
+        <span class="ipd-subpages__arrow" aria-hidden="true">→</span>
+      </a>
+
+      <a class="ipd-subpages__btn" href="https://ipdetroit.com/alarmes/">
+        <span class="ipd-subpages__icon" aria-hidden="true">🛡️</span>
+        <span class="ipd-subpages__text">
+          <strong>Alarmes</strong>
+          <small>Monitoramento e suporte</small>
+        </span>
+        <span class="ipd-subpages__arrow" aria-hidden="true">→</span>
+      </a>
+    </div>
+
+    <!-- GRID HERO -->
+    <div class="ipd-hero-grid">
+
+      <div class="ipd-hero-left">
+        <div class="ipd-hero-card">
+          <p>
+            A IPDetroit é referência em automação e segurança eletrônica,
+            oferecendo soluções completas em CFTV inteligente, alarmes,
+            controle de acesso e monitoramento 24h.
+          </p>
+
+          <div class="ipd-section-cta" style="justify-content:flex-start;">
+            <a href="#clientes" class="ipd-btn ipd-btn--ghost">Ver Clientes</a>
+            <a href="#ipd-calc" class="ipd-btn ipd-btn--orange">🧮 Calcule Agora</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="ipd-hero-right">
+        <!-- ÂNCORA DO FORM -->
+        <div class="ipd-calc-box" id="ipd-calc">
+
+          <h3>CALCULE</h3>
+          <p class="ipd-calc-sub">
+            o orçamento do Alarme <strong>IPDetroit</strong>
+          </p>
+
+          <!-- CALCULADORA (shortcode) -->
+          <div class="ipd-calc-embed">
+            [ipd_calculadora]
+          </div>
+
+          <!-- CTA extra -->
+          <div class="ipd-mini-cta">
+            <a class="ipd-btn ipd-btn--ghost ipd-btn--pill"
+               href="https://wa.link/6wkuhz"
+               target="_blank" rel="noopener">Preciso de ajuda</a>
+          </div>
+
+          <div class="ipd-calc-phone" style="margin-top:12px; color:#222;">
+            Ligue agora <strong style="font-size:20px;">+55 800 800 4411</strong>
+          </div>
+
+          <small class="ipd-calc-legal" style="display:block; font-size:11px; color:#777; margin-top:8px;">
+            Ao enviar, você concorda com nossa política de privacidade.
+          </small>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- INTRO -->
+<section class="ipd-article" id="intro">
+  <div class="ipd-container">
+    <p class="ipd-article-text">
+      Empresas, fabricantes, condomínios e instituições públicas que confiam
+      na IPDetroit para proteger operações, patrimônios e pessoas.
+    </p>
+
+    <div class="ipd-section-cta">
+      <a class="ipd-btn ipd-btn--orange" href="#ipd-calc">🧮 CALCULE AGORA →</a>
+      <a class="ipd-btn ipd-btn--ghost" href="#servicos">Ver serviços</a>
+    </div>
+  </div>
+</section>
+
+<!-- SERVIÇOS -->
+<section class="ipd-services" id="servicos">
+
+  <article class="ipd-service-card">
+    <div class="ipd-card">
+      <h3>CFTV Profissional</h3>
+      <p>Sistemas de monitoramento inteligente com câmeras de alta definição, acesso remoto e integração com alarmes e controle de acesso.</p>
+
+      <div class="ipd-service-cta">
+        <a class="ipd-btn ipd-btn--ghost ipd-btn--pill" href="https://ipdetroit.com/cftv/">Ver detalhes</a>
+        <a class="ipd-btn ipd-btn--orange ipd-btn--pill" href="#ipd-calc">Calcule Agora</a>
+      </div>
+    </div>
+    <div class="ipd-media">
+      <span class="ipd-number">01</span>
+      <img src="http://ipdetroit.com/wp-content/uploads/2025/12/photo-1611506583390-abc0fbf28865.jpeg" alt="">
+    </div>
+  </article>
+
+  <article class="ipd-service-card">
+    <div class="ipd-card">
+      <h3>Automação & Controle</h3>
+      <p>Automação de portões, iluminação, acesso veicular e predial, trazendo praticidade, segurança e gestão inteligente.</p>
+
+      <div class="ipd-service-cta">
+        <a class="ipd-btn ipd-btn--ghost ipd-btn--pill" href="https://ipdetroit.com/automacao/">Ver detalhes</a>
+        <a class="ipd-btn ipd-btn--orange ipd-btn--pill" href="#ipd-calc">Calcule Agora</a>
+      </div>
+    </div>
+    <div class="ipd-media">
+      <span class="ipd-number">02</span>
+      <img src="http://ipdetroit.com/wp-content/uploads/2025/12/photo-1665655034566-d0f219bd23b3.jpeg" alt="">
+    </div>
+  </article>
+
+  <article class="ipd-service-card">
+    <div class="ipd-card">
+      <h3>Alarmes & Monitoramento</h3>
+      <p>Sistemas de alarme com monitoramento remoto, integração com CFTV e suporte técnico especializado.</p>
+
+      <div class="ipd-service-cta">
+        <a class="ipd-btn ipd-btn--ghost ipd-btn--pill" href="https://ipdetroit.com/alarmes/">Ver detalhes</a>
+        <a class="ipd-btn ipd-btn--orange ipd-btn--pill" href="#ipd-calc">Calcule Agora</a>
+      </div>
+    </div>
+    <div class="ipd-media">
+      <span class="ipd-number">03</span>
+      <img src="http://ipdetroit.com/wp-content/uploads/2025/12/photo-1558002038-1055907df827.jpeg" alt="">
+    </div>
+  </article>
+
+</section>
+
+<!-- 1) SOLUÇÕES -->
+<section class="ipd-features-full" id="solucoes">
+  <div class="ipd-container ipd-features-inner">
+
+    <div class="ipd-feature-card">
+      <span class="ipd-badge">🌐 <span>Soluções</span></span>
+      <h3>Tecnologia</h3>
+      <p>Implementamos as mais avançadas tecnologias em segurança eletrônica, desde sistemas de câmeras inteligentes até controle de acesso sofisticado.</p>
+    </div>
+
+    <div class="ipd-feature-card">
+      <span class="ipd-badge">🛡️ <span>Serviços</span></span>
+      <h3>Proteção</h3>
+      <p>Oferecemos um portfólio completo de serviços de segurança, incluindo instalação, manutenção e monitoramento remoto.</p>
+    </div>
+
+  </div>
+
+  <div class="ipd-features-cta">
+    <a class="ipd-btn ipd-btn--orange" href="#ipd-calc">🧮 CALCULE AGORA →</a>
+    <a class="ipd-btn ipd-btn--ghost" href="https://wa.link/6wkuhz" target="_blank" rel="noopener">Falar no WhatsApp</a>
+  </div>
+</section>
+
+<!-- 2) BANNER SEPARADOR -->
+<section class="ipd-hero-bleed" aria-label="Banner separador">
+  <div class="ipd-hero-bleed__bg"></div>
+  <div class="ipd-hero-bleed__overlay"></div>
+</section>
+
+<!-- 3) GALERIA -->
+<section class="ipd-gallery-full" id="galeria">
+  <div class="ipd-gallery-overlay" aria-hidden="true"></div>
+
+  <div class="ipd-container ipd-gallery-grid">
+    <div class="ipd-gallery-col col-1">
+      <img src="http://ipdetroit.com/wp-content/uploads/2025/12/photo-1765121689322-6befc57dc8db.jpeg" alt="">
+    </div>
+
+    <div class="ipd-gallery-col col-2">
+      <img src="http://ipdetroit.com/wp-content/uploads/2025/12/photo-1665655034566-d0f219bd23b3.jpeg" alt="">
+    </div>
+
+    <div class="ipd-gallery-col col-3">
+      <img src="http://ipdetroit.com/wp-content/uploads/2025/12/photo-1762340915700-356b34475448.jpeg" alt="">
+    </div>
+  </div>
+</section>
+
+<!-- 4) MARQUEE -->
+<section class="ipd-marquee-section" aria-label="Carrossel de chamadas">
+  <div class="ipd-marquee-track">
+    <div class="ipd-marquee">
+      <span>
+        CFTV de ponta para sua tranquilidade • Automação de portões: praticidade sem igual • Alarmes inteligentes e monitoramento 24h •
+      </span>
+      <span>
+        CFTV de ponta para sua tranquilidade • Automação de portões: praticidade sem igual • Alarmes inteligentes e monitoramento 24h •
+      </span>
+    </div>
+  </div>
+</section>
+
+<!-- 5) CLIENTES -->
+<section class="ipd-clientes" id="clientes">
+  <div class="ipd-container ipd-clientes__inner">
+
+    <div class="ipd-clientes__title">
+      <span class="ipd-clientes__label">🌐 Clientes</span>
+      <h2>Quem Confia na IPDetroit</h2>
+      <p>Grandes nomes como Intelbras, HikVision, Ezviz são nossos parceiros da indústria. Veja quem mais faz parte da nossa família de segurança abaixo.</p>
+
+      <div class="ipd-section-cta">
+        <a class="ipd-btn ipd-btn--orange" href="#ipd-calc">🧮 CALCULE AGORA →</a>
+        <a class="ipd-btn ipd-btn--ghost" href="#projetos">Ver projetos</a>
+      </div>
+    </div>
+
+    <div class="ipd-clientes__grid">
+      <div class="ipd-clientes__row">
+        <div class="ipd-clientes__card"><img src="http://ipdetroit.com/wp-content/uploads/2025/10/Parceiros-09.png" alt=""></div>
+        <div class="ipd-clientes__card"><img src="http://ipdetroit.com/wp-content/uploads/2025/10/Parceiros-08.png" alt=""></div>
+        <div class="ipd-clientes__card"><img src="http://ipdetroit.com/wp-content/uploads/2025/10/Parceiros-07.png" alt=""></div>
+        <div class="ipd-clientes__card"><img src="http://ipdetroit.com/wp-content/uploads/2025/10/Parceiros-06.png" alt=""></div>
+        <div class="ipd-clientes__card"><img src="http://ipdetroit.com/wp-content/uploads/2025/10/Logomarca_Intelbras_verde.png" alt="Intelbras"></div>
+      </div>
+
+      <div class="ipd-clientes__row">
+        <div class="ipd-clientes__card"><img src="http://ipdetroit.com/wp-content/uploads/2025/10/Parceiros-04.png" alt=""></div>
+        <div class="ipd-clientes__card"><img src="http://ipdetroit.com/wp-content/uploads/2025/10/Parceiros-03.png" alt=""></div>
+        <div class="ipd-clientes__card"><img src="http://ipdetroit.com/wp-content/uploads/2025/10/Parceiros-02.png" alt=""></div>
+        <div class="ipd-clientes__card"><img src="http://ipdetroit.com/wp-content/uploads/2025/10/Parceiros-01.png" alt=""></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- 6/7) PROJETOS (LAYOUT PEDIDO) -->
+<section class="ipd-projetos" id="projetos">
+  <div class="ipd-projetos__bg" aria-hidden="true">
+    <img src="http://ipdetroit.com/wp-content/uploads/2025/12/photo-1611506583390-abc0fbf28865.jpeg" alt="">
+    <div class="ipd-projetos__overlay"></div>
+  </div>
+
+  <div class="ipd-container ipd-projetos__container">
+
+    <!-- RESUMO (ESQUERDA / TOPO) -->
+    <div class="ipd-projetos__intro ipd-projetos__intro--left">
+      <h2>Projetos</h2>
+
+      <p>Projetos personalizados: atendemos grandes empresas portuárias, condomínios e empresas de diversos portes.</p>
+
+      <p>
+        Também desenvolvemos projetos próprios, como a <strong>Detroit Escola</strong>,
+        além da nossa <strong>Plataforma de Leilão</strong> e do <strong>E-commerce IPDetroit</strong>.
+      </p>
+
+      <div class="ipd-section-cta" style="justify-content:flex-start;">
+        <a class="ipd-btn ipd-btn--orange" href="#ipd-calc">🧮 CALCULE AGORA →</a>
+        <a class="ipd-btn ipd-btn--ghost" href="https://wa.link/6wkuhz" target="_blank" rel="noopener">Falar no WhatsApp</a>
+      </div>
+    </div>
+
+    <!-- CARD: LEILÃO (DIREITA / TOPO) -->
+    <article class="ipd-projeto-card ipd-projeto--leilao">
+      <div class="ipd-projeto-card__top">
+        <span class="ipd-label ipd-label--azul">🔨 Leilão</span>
+        <img src="http://ipdetroit.com/wp-content/uploads/2025/12/photo-1673990063940-39bd84212f4b.jpeg" alt="">
+      </div>
+
+      <h3>Plataforma de Leilão IPDetroit</h3>
+      <p>Plataforma digital de leilões focada em segurança, tecnologia e oportunidades para empresas e órgãos públicos.</p>
+
+      <div class="ipd-service-cta">
+        <a href="https://leilao.ipdetroit.com/" target="_blank" rel="noopener" class="ipd-btn ipd-btn--ghost ipd-btn--pill">Acessar Leilão</a>
+      </div>
+    </article>
+
+    <!-- CARD: ESCOLA (ESQUERDA / MEIO) -->
+    <article class="ipd-projeto-card ipd-projeto--escola">
+      <div class="ipd-projeto-card__top">
+        <span class="ipd-label ipd-label--azul">🎓 Escola</span>
+        <img src="http://ipdetroit.com/wp-content/uploads/2025/12/photo-1529265895721-65945a176cff-1.jpeg" alt="">
+      </div>
+
+      <h3>Detroit Escola</h3>
+      <p>Projeto educacional focado na formação de profissionais em redes, suporte técnico, instalação e manutenção de segurança eletrônica.</p>
+
+      <div class="ipd-service-cta">
+        <span class="ipd-btn ipd-btn--ghost ipd-btn--pill" style="cursor:default; opacity:.9;">Em desenvolvimento</span>
+      </div>
+    </article>
+
+    <!-- CARD: E-COMMERCE (DIREITA / MEIO) -->
+    <article class="ipd-projeto-card ipd-projeto--ecommerce">
+      <div class="ipd-projeto-card__top">
+        <span class="ipd-label ipd-label--azul">🛒 E-commerce</span>
+        <img src="http://ipdetroit.com/wp-content/uploads/2025/12/photo-1558002038-1055907df827.jpeg" alt="">
+      </div>
+
+      <h3>IPDetroit Electronics</h3>
+      <p>Loja online especializada em equipamentos de segurança eletrônica, automação, CFTV, alarmes e soluções profissionais.</p>
+
+      <div class="ipd-service-cta">
+        <a href="https://www.ipdetroitelectronics.com.br/" target="_blank" rel="noopener" class="ipd-btn ipd-btn--ghost ipd-btn--pill">Acessar Loja</a>
+      </div>
+    </article>
+
+    <!-- CARD: STUDIO (ESQUERDA / BAIXO) -->
+    <article class="ipd-projeto-card ipd-projeto--studio">
+      <div class="ipd-projeto-card__top">
+        <span class="ipd-label ipd-label--azul">🎙️ Studio</span>
+        <img src="http://ipdetroit.com/wp-content/uploads/2025/12/photo-1611506583390-abc0fbf28865.jpeg" alt="">
+      </div>
+
+      <h3>Detroit Cast</h3>
+      <p>
+        Studio profissional disponível para aluguel, com capacidade de <strong>até 8 pessoas</strong>.
+        Ambiente com <strong>ar-condicionado</strong>, <strong>isolamento acústico</strong> e estrutura completa com
+        <strong>microfones, fones</strong> e <strong>câmeras</strong> de primeiríssima qualidade.
+      </p>
+
+      <div class="ipd-service-cta">
+        <a href="https://wa.link/6wkuhz" target="_blank" rel="noopener" class="ipd-btn ipd-btn--orange ipd-btn--pill">
+          Reservar no WhatsApp
+        </a>
+      </div>
+    </article>
+
+    <!-- RESUMO (DIREITA / BAIXO) -->
+    <div class="ipd-projetos__intro ipd-projetos__intro--right">
+      <h2>Projetos</h2>
+
+      <p>Quer um projeto sob medida (empresa, condomínio, indústria ou órgão público)?</p>
+
+      <p>
+        Fale com a IPDetroit e receba um plano completo com opções de
+        <strong>instalação</strong>, <strong>suporte</strong> e <strong>monitoramento</strong>.
+      </p>
+
+      <div class="ipd-section-cta" style="justify-content:flex-start;">
+        <a class="ipd-btn ipd-btn--orange" href="#ipd-calc">🧮 CALCULE AGORA →</a>
+        <a class="ipd-btn ipd-btn--ghost" href="https://wa.link/6wkuhz" target="_blank" rel="noopener">Falar no WhatsApp</a>
+      </div>
+    </div>
+
+  </div>
+</section>
