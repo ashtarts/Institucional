@@ -1,1 +1,1 @@
-https://ipdetroit.com/principal/
+https://ipdetroit.com
