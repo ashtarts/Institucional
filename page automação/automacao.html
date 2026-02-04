@@ -1,0 +1,912 @@
+<!-- =====================================================
+     IPDETROIT • AUTOMAÇÃO — CÓDIGO COMPLETO (NO PADRÃO DO ALARMES)
+     WhatsApp padrão: https://wa.link/v3d3tt
+     (cole TUDO no módulo de código)
+===================================================== -->
+
+<style>
+/* =====================================================
+   IPDETROIT • AUTOMAÇÃO — CSS COMPLETO (PADRÃO ALARMES)
+   + FIX: TEXTO DO TBODY DA TABELA (preto p/ ler no fundo branco)
+===================================================== */
+
+/* anti-barrinha / anti-overflow */
+html, body { max-width: 100%; overflow-x: hidden; }
+.ipd-auto-page, .ipd-auto-page * { box-sizing: border-box; }
+.ipd-auto-page img { max-width: 100%; height: auto; display: block; }
+
+/* =====================================================
+   HERO BASE (igual home)
+===================================================== */
+.ipd-auto-page .ipd-hero{
+  position:relative;
+  width:100vw;
+  min-height:100vh;
+  margin-left:calc(50% - 50vw);
+  margin-right:calc(50% - 50vw);
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+/* BACKGROUND */
+.ipd-auto-page .ipd-hero-bg{ position:absolute; inset:0; z-index:1; }
+.ipd-auto-page .ipd-hero-bg img{ width:100%; height:100%; object-fit:cover; }
+.ipd-auto-page .ipd-hero-overlay{
+  position:absolute; inset:0; z-index:2;
+  background: rgba(30, 35, 75, 0.65);
+}
+
+/* HEADER */
+.ipd-auto-page .ipd-header--inside-hero{
+  position:absolute;
+  top:0; left:50%;
+  transform:translateX(-50%);
+  width:100vw;
+  z-index:4;
+}
+.ipd-auto-page .ipd-header__inner{
+  max-width:1400px;
+  margin:0 auto;
+  padding:28px 32px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+}
+.ipd-auto-page .ipd-header__logo img{ height:44px; }
+.ipd-auto-page .ipd-header__nav{
+  display:flex;
+  gap:40px;
+  flex-wrap:wrap;
+}
+.ipd-auto-page .ipd-header__nav a{
+  color:#fff;
+  text-decoration:none;
+  font-size:16px;
+}
+.ipd-auto-page .ipd-header__actions{
+  display:flex;
+  gap:16px;
+  flex-wrap:wrap;
+}
+
+/* BOTÕES (mesmos do Alarmes) */
+.ipd-auto-page .ipd-btn{
+  display:inline-flex;
+  align-items:center;
+  padding:10px 22px;
+  border-radius:999px;
+  font-weight:600;
+  text-decoration:none;
+  border:0;
+}
+.ipd-auto-page .ipd-btn--primary{
+  background:#ffffff;
+  color:#F08723;
+  box-shadow: 0 10px 22px rgba(0,0,0,0.18);
+}
+.ipd-auto-page .ipd-btn--ghost{
+  background:rgba(255,255,255,.10);
+  color:#fff;
+  border:1px solid rgba(255,255,255,.18);
+  backdrop-filter: blur(10px);
+}
+.ipd-auto-page .ipd-btn--orange{
+  background:#F08723;
+  color:#fff;
+  box-shadow:0 12px 28px rgba(240,135,35,0.35);
+}
+.ipd-auto-page .ipd-btn--pill{
+  padding:10px 16px;
+  font-size:13px;
+  font-weight:900;
+}
+
+/* HEADER MOBILE */
+@media (max-width: 768px){
+  .ipd-auto-page .ipd-header--inside-hero{
+    left:0;
+    transform:none;
+    width:100%;
+  }
+  .ipd-auto-page .ipd-header__inner{
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    padding:20px 16px;
+    gap:12px;
+  }
+  .ipd-auto-page .ipd-header__nav{ display:none; }
+  .ipd-auto-page .ipd-header__actions{ width:100%; justify-content:center; }
+  .ipd-auto-page .ipd-header__actions a:first-child{ display:none; }
+  .ipd-auto-page .ipd-header__actions a:last-child{
+    font-size:14px;
+    padding:10px 18px;
+    border-radius:999px;
+    background:#ffffff;
+    color:#F08723;
+    box-shadow:0 6px 18px rgba(240,135,35,0.35);
+  }
+}
+
+/* CONTEÚDO HERO */
+.ipd-auto-page .ipd-hero-content{
+  position:relative;
+  z-index:3;
+  max-width:1200px;
+  width:100%;
+  padding:0 24px;
+  text-align:center;
+  margin-top:160px;
+}
+
+.ipd-auto-page .ipd-hero-title{
+  font-size:64px;
+  font-weight:500;
+  color:#ffffff;
+  margin:0;
+}
+.ipd-auto-page .ipd-hero-title--center{ margin-bottom:56px; }
+
+/* GRID */
+.ipd-auto-page .ipd-hero-grid{
+  display:grid;
+  grid-template-columns:1.1fr 0.9fr;
+  gap:48px;
+  align-items:center;
+}
+.ipd-auto-page .ipd-hero-left{ display:flex; justify-content:flex-start; }
+.ipd-auto-page .ipd-hero-right{ display:flex; justify-content:flex-end; }
+
+/* CARD ESQUERDA */
+.ipd-auto-page .ipd-hero-card{
+  background:#1E234B;
+  padding:48px;
+  border-radius:18px;
+  box-shadow:0 30px 80px rgba(0,0,0,0.45);
+  text-align:left;
+}
+.ipd-auto-page .ipd-hero-card p{
+  color:#fff;
+  font-size:18px;
+  line-height:1.6;
+  margin:0 0 18px;
+}
+
+/* bullets */
+.ipd-auto-page .ipd-auto-bullets{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:10px 14px;
+  margin: 18px 0 0;
+}
+.ipd-auto-page .ipd-auto-bullet{
+  color:#ffffff;
+  opacity:.92;
+  font-size:14px;
+  line-height:1.35;
+}
+
+/* CAIXA PREÇOS (no lugar do form) */
+.ipd-auto-page .ipd-auto-pricebox{
+  background:#fff;
+  border-radius:20px;
+  padding:32px 28px;
+  max-width:420px;
+  width:100%;
+  text-align:center;
+  box-shadow:0 30px 80px rgba(0,0,0,0.45);
+}
+.ipd-auto-page .ipd-auto-pricebox h3{
+  margin:0;
+  color:#091844;
+  font-weight:900;
+  letter-spacing:.4px;
+}
+.ipd-auto-page .ipd-auto-pricebox-sub{
+  margin:10px 0 18px;
+  color:#1E234B;
+  opacity:.85;
+  font-size:14px;
+}
+.ipd-auto-page .ipd-auto-pricebox-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:10px;
+  margin-bottom:14px;
+}
+.ipd-auto-page .ipd-auto-mini{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+  text-decoration:none;
+  padding:14px 14px;
+  border-radius:16px;
+  border:1px solid #e8e8e8;
+  background:#fafafa;
+  transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+  text-align:left;
+}
+.ipd-auto-page .ipd-auto-mini:hover{
+  transform:translateY(-2px);
+  box-shadow:0 14px 28px rgba(0,0,0,0.12);
+  border-color:rgba(240,135,35,0.35);
+}
+.ipd-auto-page .ipd-auto-mini-title{
+  color:#091844;
+  font-weight:900;
+  font-size:14px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+}
+.ipd-auto-page .ipd-auto-mini-price{
+  color:#1E234B;
+  font-size:13px;
+  opacity:.92;
+}
+
+.ipd-auto-page .ipd-auto-mini--highlight{
+  border-color:rgba(240,135,35,0.45);
+  background:rgba(240,135,35,0.08);
+}
+
+/* badge nível */
+.ipd-auto-page .ipd-level{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:6px 10px;
+  border-radius:999px;
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:.3px;
+  background:rgba(9,24,68,0.10);
+  color:#091844;
+  white-space:nowrap;
+}
+.ipd-auto-page .ipd-level--orange{
+  background:rgba(240,135,35,0.14);
+  color:#a24c05;
+}
+
+.ipd-auto-page .ipd-auto-whats{
+  display:block;
+  background:#F08723;
+  color:#ffffff;
+  padding:16px;
+  border-radius:999px;
+  text-decoration:none;
+  font-weight:900;
+  box-shadow:0 10px 22px rgba(240,135,35,0.35);
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+.ipd-auto-page .ipd-auto-whats:hover{
+  transform:translateY(-2px);
+  box-shadow:0 16px 30px rgba(240,135,35,0.45);
+}
+
+.ipd-auto-page .ipd-auto-note{
+  margin-top:10px;
+  color:#091844;
+  opacity:.92;
+  font-size:12px;
+  line-height:1.35;
+}
+
+.ipd-auto-page .ipd-auto-phone{
+  margin-top:12px;
+  color:#091844;
+  font-size:14px;
+}
+.ipd-auto-page .ipd-auto-phone strong{ font-size:18px; }
+
+/* RESPONSIVO HERO */
+@media (max-width: 992px){
+  .ipd-auto-page .ipd-hero-title{ font-size:40px; }
+  .ipd-auto-page .ipd-hero-grid{
+    grid-template-columns:1fr;
+    gap:32px;
+  }
+  .ipd-auto-page .ipd-hero-left,
+  .ipd-auto-page .ipd-hero-right{
+    justify-content:center;
+  }
+  .ipd-auto-page .ipd-auto-bullets{ grid-template-columns:1fr; }
+}
+
+/* ===== faixa intro (igual home) — AJUSTADA (igual Alarmes) ===== */
+.ipd-auto-page .ipd-article{
+  position:relative;
+  width:100vw;
+  margin-left:calc(50% - 50vw);
+  margin-right:calc(50% - 50vw);
+  background-color:#1E234B;
+  padding:80px 0;
+  display:flex;
+  justify-content:center;
+}
+.ipd-auto-page .ipd-article-inner{
+  max-width:1600px;
+  width:100%;
+  padding:0 40px;
+}
+.ipd-auto-page .ipd-article-content{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+}
+.ipd-auto-page .ipd-article-text{
+  width:60%;
+  font-size:20px;
+  line-height:1.6;
+  text-align:center;
+  color:#FFEDF7;
+  margin:0 auto;
+}
+
+/* CTA da intro (centralizado) */
+.ipd-auto-page .ipd-auto-intro-cta{
+  width:100%;
+  margin-top:22px;
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+@media (max-width: 992px){
+  .ipd-auto-page .ipd-article{ padding:60px 0; }
+  .ipd-auto-page .ipd-article-text{ width:100%; font-size:18px; }
+}
+
+/* ===== Serviços (3 cards iguais home) ===== */
+.ipd-auto-page .ipd-services{
+  width:100vw;
+  margin-left:calc(50% - 50vw);
+  margin-right:calc(50% - 50vw);
+  background:#1E234B;
+  padding:80px 64px;
+  display:flex;
+  gap:48px;
+  box-sizing:border-box;
+}
+
+.ipd-auto-page .ipd-service-card{
+  flex:1;
+  display:flex;
+  height:420px;
+  border-radius:28px;
+  overflow:hidden;
+  box-shadow:0 20px 60px rgba(0,0,0,0.35);
+}
+
+.ipd-auto-page .ipd-card{
+  width:50%;
+  background:#F08723;
+  padding:48px 40px;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+}
+.ipd-auto-page .ipd-card h3{
+  font-size:28px;
+  font-weight:900;
+  margin:0 0 16px;
+  color:#ffffff;
+}
+.ipd-auto-page .ipd-card p{
+  font-size:15px;
+  line-height:1.6;
+  color:#ffffff;
+  margin:0;
+}
+
+.ipd-auto-page .ipd-media{ width:50%; position:relative; overflow:hidden; }
+.ipd-auto-page .ipd-media img{ width:100%; height:100%; object-fit:cover; }
+.ipd-auto-page .ipd-number{
+  position:absolute;
+  top:16px; right:16px;
+  background:#ffffff;
+  color:#1E0A17;
+  padding:10px 14px;
+  border-radius:999px;
+  font-size:14px;
+  font-weight:900;
+}
+
+@media (max-width: 992px){
+  .ipd-auto-page .ipd-services{
+    flex-direction:column;
+    padding:48px 24px;
+  }
+  .ipd-auto-page .ipd-service-card{
+    flex-direction:column-reverse;
+    height:auto;
+  }
+  .ipd-auto-page .ipd-card{
+    width:100%;
+    padding:32px 24px;
+  }
+  .ipd-auto-page .ipd-media{
+    width:100%;
+    height:260px;
+  }
+}
+
+/* ===== preços (tabela no padrão da home) ===== */
+.ipd-auto-page .ipd-plans-bleed{
+  background:#1E234B;
+  padding:120px 0;
+  width:100vw;
+  margin-left:calc(50% - 50vw);
+  margin-right:calc(50% - 50vw);
+}
+
+.ipd-auto-page .ipd-plans-wrap{
+  max-width:1280px;
+  margin:0 auto;
+  padding:0 48px;
+  color:#ffffff; /* ok no fundo azul */
+}
+
+.ipd-auto-page .ipd-plans-title{
+  text-align:center;
+  margin-bottom:56px;
+}
+.ipd-auto-page .ipd-plans-title h2{
+  font-size:42px;
+  color:#F08723;
+  margin:0 0 10px;
+}
+.ipd-auto-page .ipd-plans-title p{
+  color:#cfd6f1;
+  margin:0;
+}
+
+.ipd-auto-page .ipd-table-scroll{ overflow-x:auto; }
+
+.ipd-auto-page .ipd-plans-table{
+  width:100%;
+  max-width:1100px;
+  margin:0 auto;
+  background:#ffffff;
+  border:none !important;
+  outline:none !important;
+  border-radius:18px;
+  overflow:hidden;
+  border-collapse:collapse;
+}
+
+.ipd-auto-page .ipd-plans-table thead th{
+  background:#091844;
+  color:#ffffff;
+  border-bottom:none;
+}
+
+.ipd-auto-page .ipd-plans-table th,
+.ipd-auto-page .ipd-plans-table td{
+  padding:18px 16px;
+  text-align:center;
+  font-size:14px;
+  border-bottom:1px solid #e6e9f2;
+}
+
+.ipd-auto-page .col-feature{
+  text-align:left !important;
+  width:260px;
+  font-weight:900;
+  color:#000;
+}
+.ipd-auto-page .col-plan{ width:180px; }
+
+.ipd-auto-page .ipd-auto-td-left{
+  text-align:left !important;
+  color:#111;
+}
+
+.ipd-auto-page .ipd-btn-table{
+  display:inline-block;
+  background:#F08723;
+  color:#ffffff;
+  padding:12px 28px;
+  border-radius:999px;
+  font-size:14px;
+  font-weight:900;
+  text-decoration:none;
+  transition:all .25s ease;
+  box-shadow:0 8px 20px rgba(240,135,35,.35);
+}
+.ipd-auto-page .ipd-btn-table:hover{
+  background:#ff9a3d;
+  transform:translateY(-2px);
+  box-shadow:0 18px 36px rgba(246, 137, 42, 0.45);
+}
+
+.ipd-auto-page .ipd-plans-footnote{
+  max-width:1100px;
+  margin:14px auto 0;
+  color:#cfd6f1;
+  font-size:13px;
+  line-height:1.5;
+  text-align:center;
+}
+
+.ipd-auto-page .ipd-plans-cta{
+  width:100%;
+  display:flex;
+  justify-content:center;
+  margin-top:40px;
+}
+.ipd-auto-page .ipd-btn-plan{
+  background:#F6892A;
+  color:#ffffff;
+  font-size:18px;
+  font-weight:900;
+  padding:16px 36px;
+  border-radius:999px;
+  text-decoration:none;
+  transition:all 0.25s ease;
+  box-shadow:0 12px 28px rgba(246, 137, 42, 0.35);
+}
+.ipd-auto-page .ipd-btn-plan:hover{
+  background:#ff9a3d;
+  transform:translateY(-2px);
+  box-shadow:0 18px 36px rgba(246, 137, 42, 0.45);
+}
+
+@media (max-width: 992px){
+  .ipd-auto-page .ipd-plans-wrap{ padding:0 24px; }
+  .ipd-auto-page .ipd-plans-title h2{ font-size:32px; }
+}
+
+/* ===== FAQ ===== */
+.ipd-auto-page .ipd-auto-faq{
+  width:100vw;
+  margin-left:calc(50% - 50vw);
+  margin-right:calc(50% - 50vw);
+  background:#1E234B;
+  padding:90px 0;
+}
+.ipd-auto-page .ipd-auto-wrap{
+  max-width:1000px;
+  margin:0 auto;
+  padding:0 24px;
+}
+.ipd-auto-page .ipd-auto-h2{
+  text-align:center;
+  color:#ffffff;
+  font-size:42px;
+  margin:0 0 30px;
+}
+.ipd-auto-page .ipd-auto-qa{
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 18px;
+  padding: 6px 18px;
+  margin: 12px 0;
+}
+.ipd-auto-page .ipd-auto-qa summary{
+  cursor:pointer;
+  list-style:none;
+  padding: 16px 0;
+  font-weight:900;
+  color:#ffffff;
+}
+.ipd-auto-page .ipd-auto-qa summary::-webkit-details-marker{ display:none; }
+.ipd-auto-page .ipd-auto-a{
+  padding: 0 0 16px;
+  color:#e6e8ff;
+  line-height:1.6;
+}
+
+/* CTA final (reaproveita classe do intro) */
+.ipd-auto-page .ipd-auto-final-cta{
+  width:100%;
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-top:26px;
+}
+
+@media (max-width: 480px){
+  .ipd-auto-page .ipd-auto-h2{ font-size:30px; }
+}
+
+/* =====================================================
+   FIX DEFINITIVO: FORÇAR TEXTO ESCURO NO TBODY
+   (evita ficar branco no fundo branco)
+===================================================== */
+.ipd-auto-page .ipd-plans-table tbody td{ color:#111 !important; }
+.ipd-auto-page .ipd-plans-table tbody td.col-feature,
+.ipd-auto-page .ipd-plans-table tbody td.col-feature *{ color:#000 !important; }
+.ipd-auto-page .ipd-plans-table tbody td small{ color:#333 !important; opacity:1 !important; }
+.ipd-auto-page .ipd-plans-table tbody td.ipd-auto-td-left,
+.ipd-auto-page .ipd-plans-table tbody td.ipd-auto-td-left *{ color:#111 !important; }
+.ipd-auto-page .ipd-plans-table tbody a{ color:inherit !important; }
+</style>
+
+<div class="ipd-auto-page">
+
+  <!-- HERO -->
+  <section class="ipd-hero" id="topo">
+
+    <div class="ipd-hero-bg">
+      <img src="http://ipdetroit.com/wp-content/uploads/2025/12/photo-1665655034566-d0f219bd23b3.jpeg" alt="Automação IPDetroit">
+      <div class="ipd-hero-overlay"></div>
+    </div>
+
+    <header class="ipd-header ipd-header--inside-hero">
+      <div class="ipd-header__inner">
+
+        <div class="ipd-header__logo">
+          <a href="https://ipdetroit.com/" aria-label="Voltar para Home">
+            <img src="http://ipdetroit.com/wp-content/uploads/2025/10/Ativo-23.png" alt="IPDetroit">
+          </a>
+        </div>
+
+        <nav class="ipd-header__nav" aria-label="Navegação Automação">
+          <a href="https://ipdetroit.com/">Home</a>
+          <a href="#intro">Sobre</a>
+          <a href="#precos">Preços</a>
+          <a href="#faq">Dúvidas</a>
+        </nav>
+
+        <div class="ipd-header__actions">
+          <a href="https://wa.link/v3d3tt" target="_blank" rel="noopener" class="ipd-btn ipd-btn--primary">
+            → Solicitar Orçamento
+          </a>
+        </div>
+
+      </div>
+    </header>
+
+    <div class="ipd-hero-content">
+      <h1 class="ipd-hero-title ipd-hero-title--center">Automação & Controle</h1>
+
+      <div class="ipd-hero-grid">
+
+        <div class="ipd-hero-left">
+          <div class="ipd-hero-card">
+            <p>
+              Automação que resolve de verdade: portões, iluminação, acesso,
+              rotinas inteligentes e integração com segurança.
+              Mais praticidade, mais controle e menos dor de cabeça.
+            </p>
+
+            <div class="ipd-auto-bullets">
+              <div class="ipd-auto-bullet">• Automação de portões (residencial/condomínio)</div>
+              <div class="ipd-auto-bullet">• Fechaduras / controle de acesso</div>
+              <div class="ipd-auto-bullet">• Iluminação e rotinas inteligentes</div>
+              <div class="ipd-auto-bullet">• Integração com CFTV (circuito fechado de TV) e alarmes</div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="ipd-hero-right">
+          <div class="ipd-auto-pricebox">
+            <h3>PLANOS DE AUTOMAÇÃO</h3>
+            <p class="ipd-auto-pricebox-sub">Valores e nível de preço (igual ao padrão do banner).</p>
+
+            <!-- OBS: Você pediu "de acordo com a img e com o outro chat".
+                 Eu só tenho valores claros do CFTV (38,90 / 89,90).
+                 Aqui deixei como "A consultar" para não inventar preço. -->
+            <div class="ipd-auto-pricebox-grid">
+              <a class="ipd-auto-mini" target="_blank" rel="noopener" href="https://wa.link/v3d3tt">
+                <span class="ipd-auto-mini-title">
+                  Automação de Portão
+                  <span class="ipd-level">Nível: Essencial</span>
+                </span>
+                <span class="ipd-auto-mini-price"><strong>Valor: a consultar</strong></span>
+              </a>
+
+              <a class="ipd-auto-mini" target="_blank" rel="noopener" href="https://wa.link/v3d3tt">
+                <span class="ipd-auto-mini-title">
+                  Controle de Acesso
+                  <span class="ipd-level">Nível: Padrão</span>
+                </span>
+                <span class="ipd-auto-mini-price"><strong>Valor: a consultar</strong></span>
+              </a>
+
+              <a class="ipd-auto-mini" target="_blank" rel="noopener" href="https://wa.link/v3d3tt">
+                <span class="ipd-auto-mini-title">
+                  Iluminação & Rotinas
+                  <span class="ipd-level ipd-level--orange">Nível: Smart</span>
+                </span>
+                <span class="ipd-auto-mini-price"><strong>Valor: a consultar</strong></span>
+              </a>
+
+              <a class="ipd-auto-mini ipd-auto-mini--highlight" target="_blank" rel="noopener" href="https://wa.link/v3d3tt">
+                <span class="ipd-auto-mini-title">
+                  Integração com Segurança
+                  <span class="ipd-level ipd-level--orange">Nível: Premium</span>
+                </span>
+                <span class="ipd-auto-mini-price"><strong>Valor: a consultar</strong></span>
+              </a>
+            </div>
+
+            <a class="ipd-auto-whats" target="_blank" rel="noopener" href="https://wa.link/v3d3tt">
+              Falar no WhatsApp →
+            </a>
+
+            <div class="ipd-auto-note">
+              Taxa de instalação: <strong>a consultar</strong> (peça sua visita técnica).<br>
+              Integrações e rotinas avançadas: <strong>sob projeto</strong>.
+            </div>
+
+            <div class="ipd-auto-phone">
+              Ligue agora <strong>+55 800 800 4411</strong>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+
+  <!-- INTRO -->
+  <section class="ipd-article" id="intro">
+    <div class="ipd-article-inner">
+      <div class="ipd-article-content">
+
+        <p class="ipd-article-text">
+          Automação não é luxo: é controle, praticidade e segurança.
+          A IPDetroit instala e configura soluções inteligentes com padrão profissional.
+        </p>
+
+        <div class="ipd-auto-intro-cta">
+          <a class="ipd-btn ipd-btn--orange ipd-btn--pill" href="https://ipdetroit.com/#home" target="_blank" rel="noopener">🧮 Calcular na Home</a>
+          <a class="ipd-btn ipd-btn--ghost ipd-btn--pill" href="https://wa.link/v3d3tt" target="_blank" rel="noopener">WhatsApp</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 CARDS -->
+  <section class="ipd-services" id="servicos-auto">
+    <article class="ipd-service-card">
+      <div class="ipd-card">
+        <h3>Portões Automáticos</h3>
+        <p>Instalação, manutenção e modernização (upgrade) de motores, centrais, controles e sensores.</p>
+      </div>
+      <div class="ipd-media">
+        <span class="ipd-number">01</span>
+        <img src="http://ipdetroit.com/wp-content/uploads/2025/12/photo-1765121689322-6befc57dc8db.jpeg" alt="Portões Automáticos">
+      </div>
+    </article>
+
+    <article class="ipd-service-card">
+      <div class="ipd-card">
+        <h3>Acesso & Fechaduras</h3>
+        <p>Controle por tag/biometria/senha, fechaduras inteligentes e soluções para residências e empresas.</p>
+      </div>
+      <div class="ipd-media">
+        <span class="ipd-number">02</span>
+        <img src="http://ipdetroit.com/wp-content/uploads/2025/12/photo-1495714096525-285e85481946.jpeg" alt="Controle de Acesso">
+      </div>
+    </article>
+
+    <article class="ipd-service-card">
+      <div class="ipd-card">
+        <h3>Rotinas Inteligentes</h3>
+        <p>Iluminação, cenas, horários e integração com Alexa (assistente virtual) e IA (Inteligência Artificial).</p>
+      </div>
+      <div class="ipd-media">
+        <span class="ipd-number">03</span>
+        <img src="http://ipdetroit.com/wp-content/uploads/2025/12/photo-1558002038-1055907df827.jpeg" alt="Rotinas Inteligentes">
+      </div>
+    </article>
+  </section>
+
+  <!-- PREÇOS (tabela) -->
+  <section class="ipd-plans-bleed" id="precos">
+    <div class="ipd-plans-wrap">
+
+      <div class="ipd-plans-title">
+        <h2>Serviços e Valores de Automação</h2>
+        <p>Nível de preço + valor (ajuste caso você tenha valores fechados).</p>
+      </div>
+
+      <div class="ipd-table-scroll">
+        <table class="ipd-plans-table ipd-auto-table">
+          <thead>
+            <tr>
+              <th class="col-feature">Serviço</th>
+              <th class="col-plan">O que inclui</th>
+              <th class="col-plan">Nível</th>
+              <th class="col-plan">Valor</th>
+              <th class="col-plan">Ação</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td class="col-feature"><strong>Automação de Portão</strong><br><small>instalação / modernização</small></td>
+              <td class="ipd-auto-td-left">Motor/central/sensores (conforme projeto) + instalação + ajuste fino</td>
+              <td><strong>Essencial</strong></td>
+              <td><strong>A consultar</strong></td>
+              <td><a class="ipd-btn-table" target="_blank" rel="noopener" href="https://wa.link/v3d3tt">WhatsApp</a></td>
+            </tr>
+
+            <tr>
+              <td class="col-feature"><strong>Controle de Acesso</strong><br><small>tag / biometria / senha</small></td>
+              <td class="ipd-auto-td-left">Instalação + configuração + treinamento do usuário</td>
+              <td><strong>Padrão</strong></td>
+              <td><strong>A consultar</strong></td>
+              <td><a class="ipd-btn-table" target="_blank" rel="noopener" href="https://wa.link/v3d3tt">WhatsApp</a></td>
+            </tr>
+
+            <tr>
+              <td class="col-feature"><strong>Iluminação & Rotinas</strong><br><small>cenas / horários</small></td>
+              <td class="ipd-auto-td-left">Definição de cenas + instalação dos dispositivos + configuração das rotinas</td>
+              <td><strong>Smart</strong></td>
+              <td><strong>A consultar</strong></td>
+              <td><a class="ipd-btn-table" target="_blank" rel="noopener" href="https://wa.link/v3d3tt">WhatsApp</a></td>
+            </tr>
+
+            <tr>
+              <td class="col-feature"><strong>Integração com Segurança</strong><br><small>CFTV + alarme + automação</small></td>
+              <td class="ipd-auto-td-left">Projeto sob medida + integração + testes e orientação de uso</td>
+              <td><strong>Premium</strong></td>
+              <td><strong>A consultar</strong></td>
+              <td><a class="ipd-btn-table" target="_blank" rel="noopener" href="https://wa.link/v3d3tt">WhatsApp</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="ipd-plans-footnote">
+        Taxa de instalação: <strong>a consultar</strong> — peça sua visita técnica. Integrações e projetos avançados: sob projeto.
+      </div>
+
+      <div class="ipd-plans-cta">
+        <a class="ipd-btn-plan" target="_blank" rel="noopener" href="https://wa.link/v3d3tt">
+          Solicitar orçamento de automação →
+        </a>
+      </div>
+
+      <div class="ipd-plans-cta" style="margin-top:14px;">
+        <a class="ipd-btn ipd-btn--ghost" href="https://ipdetroit.com/#home" target="_blank" rel="noopener">
+          🧮 Calcular na Home →
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="ipd-auto-faq" id="faq">
+    <div class="ipd-auto-wrap">
+      <h2 class="ipd-auto-h2">Dúvidas rápidas</h2>
+
+      <details class="ipd-auto-qa">
+        <summary>Dá pra automatizar portão antigo?</summary>
+        <div class="ipd-auto-a">Sim. Fazemos modernização (upgrade) de motores, centrais, sensores e controles.</div>
+      </details>
+
+      <details class="ipd-auto-qa">
+        <summary>Funciona com Alexa (assistente virtual) e app?</summary>
+        <div class="ipd-auto-a">Sim. Dependendo do cenário, configuramos automação com app e integração com Alexa.</div>
+      </details>
+
+      <details class="ipd-auto-qa">
+        <summary>Tem como integrar com CFTV (circuito fechado de TV) e alarmes?</summary>
+        <div class="ipd-auto-a">Sim. Integramos automação com segurança para criar rotinas inteligentes.</div>
+      </details>
+
+      <div class="ipd-auto-final-cta">
+        <a class="ipd-btn ipd-btn--orange" href="https://ipdetroit.com/#home" target="_blank" rel="noopener">🧮 Calcular na Home</a>
+        <a class="ipd-btn ipd-btn--ghost" href="https://wa.link/v3d3tt" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+</div>
