@@ -1,0 +1,933 @@
+<style>
+/* =====================================================
+   IPDETROIT • CFTV — PÁGINA COMPLETA (COM NÍVEL + VALOR)
+   FIX: TABELA (tbody) com texto ESCURO (evita branco no fundo branco)
+   WhatsApp PADRÃO: https://wa.link/lzxxep
+   (cole junto do HTML no módulo de código)
+===================================================== */
+
+/* ===== RESET / ANTI-OVERFLOW ===== */
+html, body{
+  width:100%;
+  max-width:100%;
+  overflow-x:hidden;
+}
+@supports (overflow: clip){
+  html, body{ overflow-x: clip; }
+}
+*,
+*::before,
+*::after{ box-sizing:border-box; }
+
+.ipd-cftv-page, .ipd-cftv-page * { box-sizing: border-box; }
+.ipd-cftv-page img { max-width: 100%; height: auto; display: block; }
+
+/* =========================
+   HERO BASE (igual home)
+========================= */
+.ipd-cftv-page .ipd-hero{
+  position:relative;
+  width:100vw;
+  min-height:100vh;
+  margin-left:calc(50% - 50vw);
+  margin-right:calc(50% - 50vw);
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+/* BACKGROUND */
+.ipd-cftv-page .ipd-hero-bg{ position:absolute; inset:0; z-index:1; }
+.ipd-cftv-page .ipd-hero-bg img{ width:100%; height:100%; object-fit:cover; }
+.ipd-cftv-page .ipd-hero-overlay{
+  position:absolute; inset:0; z-index:2;
+  background: rgba(30, 35, 75, 0.65);
+}
+
+/* HEADER */
+.ipd-cftv-page .ipd-header--inside-hero{
+  position:absolute;
+  top:0; left:50%;
+  transform:translateX(-50%);
+  width:100vw;
+  z-index:4;
+}
+
+.ipd-cftv-page .ipd-header__inner{
+  max-width:1400px;
+  margin:0 auto;
+  padding:28px 32px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+}
+
+.ipd-cftv-page .ipd-header__logo img{ height:44px; }
+
+.ipd-cftv-page .ipd-header__nav{
+  display:flex;
+  gap:40px;
+  flex-wrap:wrap;
+}
+.ipd-cftv-page .ipd-header__nav a{
+  color:#fff;
+  text-decoration:none;
+  font-size:16px;
+}
+
+.ipd-cftv-page .ipd-header__actions{
+  display:flex;
+  gap:16px;
+  flex-wrap:wrap;
+}
+
+/* BOTÕES */
+.ipd-cftv-page .ipd-btn{
+  display:inline-flex;
+  align-items:center;
+  padding:10px 22px;
+  border-radius:999px;
+  font-weight:600;
+  text-decoration:none;
+  border:0;
+}
+.ipd-cftv-page .ipd-btn--primary{
+  background:#ffffff;
+  color:#F08723;
+  box-shadow: 0 10px 22px rgba(0,0,0,0.18);
+}
+
+/* HEADER MOBILE */
+@media (max-width: 768px){
+  .ipd-cftv-page .ipd-header--inside-hero{
+    left:0;
+    transform:none;
+    width:100%;
+  }
+  .ipd-cftv-page .ipd-header__inner{
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    padding:20px 16px;
+    gap:12px;
+  }
+  .ipd-cftv-page .ipd-header__nav{ display:none; }
+  .ipd-cftv-page .ipd-header__actions{ width:100%; justify-content:center; }
+  .ipd-cftv-page .ipd-header__actions a:first-child{ display:none; }
+  .ipd-cftv-page .ipd-header__actions a:last-child{
+    font-size:14px;
+    padding:10px 18px;
+    border-radius:999px;
+    background:#ffffff;
+    color:#F08723;
+    box-shadow:0 6px 18px rgba(240,135,35,0.35);
+  }
+}
+
+/* CONTEÚDO HERO */
+.ipd-cftv-page .ipd-hero-content{
+  position:relative;
+  z-index:3;
+  max-width:1200px;
+  width:100%;
+  padding:0 24px;
+  text-align:center;
+  margin-top:160px;
+}
+
+.ipd-cftv-page .ipd-hero-title{
+  font-size:64px;
+  font-weight:500;
+  color:#ffffff;
+  margin:0;
+}
+
+.ipd-cftv-page .ipd-hero-title--center{ margin-bottom:56px; }
+
+/* GRID */
+.ipd-cftv-page .ipd-hero-grid{
+  display:grid;
+  grid-template-columns:1.1fr 0.9fr;
+  gap:48px;
+  align-items:center;
+}
+
+.ipd-cftv-page .ipd-hero-left{ display:flex; justify-content:flex-start; }
+.ipd-cftv-page .ipd-hero-right{ display:flex; justify-content:flex-end; }
+
+/* CARD ESQUERDA */
+.ipd-cftv-page .ipd-hero-card{
+  background:#1E234B;
+  padding:48px;
+  border-radius:18px;
+  box-shadow:0 30px 80px rgba(0,0,0,0.45);
+  text-align:left;
+}
+.ipd-cftv-page .ipd-hero-card p{
+  color:#fff;
+  font-size:18px;
+  line-height:1.6;
+  margin:0 0 18px;
+}
+
+/* bullets */
+.ipd-cftv-page .ipd-cftv-bullets{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:10px 14px;
+  margin: 18px 0 0;
+}
+.ipd-cftv-page .ipd-cftv-bullet{
+  color:#ffffff;
+  opacity:.92;
+  font-size:14px;
+  line-height:1.35;
+}
+
+/* CAIXA PREÇOS */
+.ipd-cftv-page .ipd-cftv-pricebox{
+  background:#fff;
+  border-radius:20px;
+  padding:32px 28px;
+  max-width:420px;
+  width:100%;
+  text-align:center;
+  box-shadow:0 30px 80px rgba(0,0,0,0.45);
+}
+.ipd-cftv-page .ipd-cftv-pricebox h3{
+  margin:0;
+  color:#091844;
+  font-weight:800;
+  letter-spacing:.4px;
+}
+.ipd-cftv-page .ipd-cftv-pricebox-sub{
+  margin:10px 0 18px;
+  color:#1E234B;
+  opacity:.85;
+  font-size:14px;
+}
+
+.ipd-cftv-page .ipd-cftv-pricebox-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:10px;
+  margin-bottom:14px;
+}
+
+.ipd-cftv-page .ipd-cftv-mini{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+  text-decoration:none;
+  padding:14px 14px;
+  border-radius:16px;
+  border:1px solid #e8e8e8;
+  background:#fafafa;
+  transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+  text-align:left;
+}
+.ipd-cftv-page .ipd-cftv-mini:hover{
+  transform:translateY(-2px);
+  box-shadow:0 14px 28px rgba(0,0,0,0.12);
+  border-color:rgba(240,135,35,0.35);
+}
+
+.ipd-cftv-page .ipd-cftv-mini-title{
+  color:#091844;
+  font-weight:900;
+  font-size:14px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+}
+.ipd-cftv-page .ipd-cftv-mini-price{
+  color:#1E234B;
+  font-size:13px;
+  opacity:.92;
+}
+
+.ipd-cftv-page .ipd-cftv-mini--highlight{
+  border-color:rgba(240,135,35,0.45);
+  background:rgba(240,135,35,0.08);
+}
+
+/* badge nível */
+.ipd-cftv-page .ipd-level{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:6px 10px;
+  border-radius:999px;
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:.3px;
+  background:rgba(9,24,68,0.10);
+  color:#091844;
+  white-space:nowrap;
+}
+.ipd-cftv-page .ipd-level--orange{
+  background:rgba(240,135,35,0.14);
+  color:#a24c05;
+}
+
+.ipd-cftv-page .ipd-cftv-whats{
+  display:block;
+  background:#F08723;
+  color:#ffffff;
+  padding:16px;
+  border-radius:999px;
+  text-decoration:none;
+  font-weight:800;
+  box-shadow:0 10px 22px rgba(240,135,35,0.35);
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+.ipd-cftv-page .ipd-cftv-whats:hover{
+  transform:translateY(-2px);
+  box-shadow:0 16px 30px rgba(240,135,35,0.45);
+}
+
+.ipd-cftv-page .ipd-cftv-note{
+  margin-top:10px;
+  color:#091844;
+  opacity:.92;
+  font-size:12px;
+  line-height:1.35;
+}
+
+.ipd-cftv-page .ipd-cftv-phone{
+  margin-top:12px;
+  color:#091844;
+  font-size:14px;
+}
+.ipd-cftv-page .ipd-cftv-phone strong{ font-size:18px; }
+
+/* RESPONSIVO HERO */
+@media (max-width: 992px){
+  .ipd-cftv-page .ipd-hero-title{ font-size:40px; }
+  .ipd-cftv-page .ipd-hero-grid{
+    grid-template-columns:1fr;
+    gap:32px;
+  }
+  .ipd-cftv-page .ipd-hero-left,
+  .ipd-cftv-page .ipd-hero-right{
+    justify-content:center;
+  }
+  .ipd-cftv-page .ipd-hero-card{ text-align:left; }
+  .ipd-cftv-page .ipd-cftv-bullets{ grid-template-columns:1fr; }
+}
+
+/* ===== faixa intro ===== */
+.ipd-cftv-page .ipd-article{
+  position:relative;
+  width:100vw;
+  margin-left:calc(50% - 50vw);
+  margin-right:calc(50% - 50vw);
+  background-color:#1E234B;
+  padding:80px 0;
+  display:flex;
+  justify-content:center;
+}
+.ipd-cftv-page .ipd-article-inner{
+  max-width:1600px;
+  width:100%;
+  padding:0 40px;
+}
+.ipd-cftv-page .ipd-article-content{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+}
+.ipd-cftv-page .ipd-article-text{
+  width:60%;
+  font-size:20px;
+  line-height:1.6;
+  text-align:center;
+  color:#FFEDF7;
+  margin:0 auto;
+}
+.ipd-cftv-page .ipd-cftv-intro-cta{
+  width:100%;
+  margin-top:22px;
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  flex-wrap:wrap;
+}
+.ipd-cftv-page .ipd-btn--ghost{
+  background:rgba(255,255,255,.10);
+  color:#fff;
+  border:1px solid rgba(255,255,255,.18);
+  backdrop-filter: blur(10px);
+}
+.ipd-cftv-page .ipd-btn--orange{
+  background:#F08723;
+  color:#fff;
+  box-shadow:0 12px 28px rgba(240,135,35,0.35);
+}
+.ipd-cftv-page .ipd-btn--pill{
+  padding:10px 16px;
+  font-size:13px;
+  font-weight:900;
+}
+@media (max-width: 992px){
+  .ipd-cftv-page .ipd-article{ padding:60px 0; }
+  .ipd-cftv-page .ipd-article-text{ width:100%; font-size:18px; }
+}
+
+/* ===== Serviços (3 cards) ===== */
+.ipd-cftv-page .ipd-services{
+  width:100vw;
+  margin-left:calc(50% - 50vw);
+  margin-right:calc(50% - 50vw);
+  background:#1E234B;
+  padding:80px 64px;
+  display:flex;
+  gap:48px;
+  box-sizing:border-box;
+}
+
+.ipd-cftv-page .ipd-service-card{
+  flex:1;
+  display:flex;
+  height:420px;
+  border-radius:28px;
+  overflow:hidden;
+  box-shadow:0 20px 60px rgba(0,0,0,0.35);
+}
+
+.ipd-cftv-page .ipd-card{
+  width:50%;
+  background:#F08723;
+  padding:48px 40px;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+}
+.ipd-cftv-page .ipd-card h3{
+  font-size:28px;
+  font-weight:600;
+  margin:0 0 16px;
+  color:#ffffff;
+}
+.ipd-cftv-page .ipd-card p{
+  font-size:15px;
+  line-height:1.6;
+  color:#ffffff;
+  margin:0;
+}
+
+.ipd-cftv-page .ipd-media{ width:50%; position:relative; overflow:hidden; }
+.ipd-cftv-page .ipd-media img{ width:100%; height:100%; object-fit:cover; }
+.ipd-cftv-page .ipd-number{
+  position:absolute;
+  top:16px; right:16px;
+  background:#ffffff;
+  color:#1E0A17;
+  padding:10px 14px;
+  border-radius:999px;
+  font-size:14px;
+  font-weight:800;
+}
+
+@media (max-width: 992px){
+  .ipd-cftv-page .ipd-services{
+    flex-direction:column;
+    padding:48px 24px;
+  }
+  .ipd-cftv-page .ipd-service-card{
+    flex-direction:column-reverse;
+    height:auto;
+  }
+  .ipd-cftv-page .ipd-card{
+    width:100%;
+    padding:32px 24px;
+  }
+  .ipd-cftv-page .ipd-media{
+    width:100%;
+    height:260px;
+  }
+}
+
+/* ===== planos (tabela) ===== */
+.ipd-cftv-page .ipd-plans-bleed{
+  background:#1E234B;
+  padding:120px 0;
+  width:100vw;
+  margin-left:calc(50% - 50vw);
+  margin-right:calc(50% - 50vw);
+}
+
+.ipd-cftv-page .ipd-plans-wrap{
+  max-width:1280px;
+  margin:0 auto;
+  padding:0 48px;
+  color:#ffffff; /* <-- ok no fundo azul da seção */
+}
+
+.ipd-cftv-page .ipd-plans-title{
+  text-align:center;
+  margin-bottom:56px;
+}
+.ipd-cftv-page .ipd-plans-title h2{
+  font-size:42px;
+  color:#F08723;
+  margin:0 0 10px;
+}
+.ipd-cftv-page .ipd-plans-title p{
+  color:#cfd6f1;
+  margin:0;
+}
+
+.ipd-cftv-page .ipd-table-scroll{ overflow-x:auto; }
+
+.ipd-cftv-page .ipd-plans-table{
+  width:100%;
+  max-width:1100px;
+  margin:0 auto;
+  background:#ffffff;
+  border:none !important;
+  outline:none !important;
+  border-radius:18px;
+  overflow:hidden;
+  border-collapse:collapse;
+}
+
+.ipd-cftv-page .ipd-plans-table thead th{
+  background:#091844;
+  color:#ffffff;
+  border-bottom:none;
+}
+
+.ipd-cftv-page .ipd-plans-table th,
+.ipd-cftv-page .ipd-plans-table td{
+  padding:18px 16px;
+  text-align:center;
+  font-size:14px;
+  border-bottom:1px solid #e6e9f2;
+}
+
+.ipd-cftv-page .col-feature{
+  text-align:left !important;
+  width:260px;
+  font-weight:800;
+  color:#000;
+}
+.ipd-cftv-page .col-plan{ width:180px; }
+
+.ipd-cftv-page .ipd-cftv-td-left{
+  text-align:left !important;
+  color:#111;
+}
+
+/* botão */
+.ipd-cftv-page .ipd-btn-table{
+  display:inline-block;
+  background:#F08723;
+  color:#ffffff;
+  padding:12px 28px;
+  border-radius:999px;
+  font-size:14px;
+  font-weight:800;
+  text-decoration:none;
+  transition:all .25s ease;
+  box-shadow:0 8px 20px rgba(240,135,35,.35);
+}
+.ipd-cftv-page .ipd-btn-table:hover{
+  background:#ff9a3d;
+  transform:translateY(-2px);
+  box-shadow:0 18px 36px rgba(246, 137, 42, 0.45);
+}
+
+.ipd-cftv-page .ipd-plans-footnote{
+  max-width:1100px;
+  margin:14px auto 0;
+  color:#cfd6f1;
+  font-size:13px;
+  line-height:1.5;
+  text-align:center;
+}
+
+.ipd-cftv-page .ipd-plans-cta{
+  width:100%;
+  display:flex;
+  justify-content:center;
+  margin-top:40px;
+}
+.ipd-cftv-page .ipd-btn-plan{
+  background:#F6892A;
+  color:#ffffff;
+  font-size:18px;
+  font-weight:800;
+  padding:16px 36px;
+  border-radius:999px;
+  text-decoration:none;
+  transition:all 0.25s ease;
+  box-shadow:0 12px 28px rgba(246, 137, 42, 0.35);
+}
+.ipd-cftv-page .ipd-btn-plan:hover{
+  background:#ff9a3d;
+  transform:translateY(-2px);
+  box-shadow:0 18px 36px rgba(246, 137, 42, 0.45);
+}
+
+@media (max-width: 992px){
+  .ipd-cftv-page .ipd-plans-wrap{ padding:0 24px; }
+  .ipd-cftv-page .ipd-plans-title h2{ font-size:32px; }
+}
+
+/* ===== FAQ ===== */
+.ipd-cftv-page .ipd-cftv-faq{
+  width:100vw;
+  margin-left:calc(50% - 50vw);
+  margin-right:calc(50% - 50vw);
+  background:#1E234B;
+  padding:90px 0;
+}
+.ipd-cftv-page .ipd-cftv-wrap{
+  max-width:1000px;
+  margin:0 auto;
+  padding:0 24px;
+}
+.ipd-cftv-page .ipd-cftv-h2{
+  text-align:center;
+  color:#ffffff;
+  font-size:42px;
+  margin:0 0 30px;
+}
+.ipd-cftv-page .ipd-cftv-qa{
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 18px;
+  padding: 6px 18px;
+  margin: 12px 0;
+}
+.ipd-cftv-page .ipd-cftv-qa summary{
+  cursor:pointer;
+  list-style:none;
+  padding: 16px 0;
+  font-weight:800;
+  color:#ffffff;
+}
+.ipd-cftv-page .ipd-cftv-qa summary::-webkit-details-marker{ display:none; }
+.ipd-cftv-page .ipd-cftv-a{
+  padding: 0 0 16px;
+  color:#e6e8ff;
+  line-height:1.6;
+}
+@media (max-width: 480px){
+  .ipd-cftv-page .ipd-cftv-h2{ font-size:30px; }
+}
+
+/* =====================================================
+   FIX DEFINITIVO: FORÇAR TEXTO ESCURO NO TBODY
+   (porque algum CSS global está aplicando color:#fff)
+===================================================== */
+.ipd-cftv-page .ipd-plans-table tbody td{ color:#111 !important; }
+.ipd-cftv-page .ipd-plans-table tbody td.col-feature,
+.ipd-cftv-page .ipd-plans-table tbody td.col-feature *{ color:#000 !important; }
+.ipd-cftv-page .ipd-plans-table tbody td small{ color:#333 !important; opacity:1 !important; }
+.ipd-cftv-page .ipd-plans-table tbody td.ipd-cftv-td-left,
+.ipd-cftv-page .ipd-plans-table tbody td.ipd-cftv-td-left *{ color:#111 !important; }
+.ipd-cftv-page .ipd-plans-table tbody a{ color:inherit !important; }
+</style>
+
+<div class="ipd-cftv-page">
+
+  <!-- ================= HERO ================= -->
+  <section class="ipd-hero ipd-cftv-hero" id="topo">
+
+    <div class="ipd-hero-bg">
+      <img src="http://ipdetroit.com/wp-content/uploads/2025/12/photo-1611506583390-abc0fbf28865.jpeg" alt="CFTV IPDetroit">
+      <div class="ipd-hero-overlay"></div>
+    </div>
+
+    <header class="ipd-header ipd-header--inside-hero">
+      <div class="ipd-header__inner">
+
+        <div class="ipd-header__logo">
+          <a href="https://ipdetroit.com/" aria-label="Voltar para Home">
+            <img src="http://ipdetroit.com/wp-content/uploads/2025/10/Ativo-23.png" alt="IPDetroit">
+          </a>
+        </div>
+
+        <nav class="ipd-header__nav" aria-label="Navegação CFTV">
+          <a href="https://ipdetroit.com/">Home</a>
+          <a href="#intro">Sobre</a>
+          <a href="#precos">Preços</a>
+          <a href="#faq">Dúvidas</a>
+        </nav>
+
+        <div class="ipd-header__actions">
+          <a
+            href="https://wa.link/lzxxep"
+            target="_blank"
+            rel="noopener"
+            class="ipd-btn ipd-btn--primary"
+          >
+            → Solicitar Orçamento
+          </a>
+        </div>
+
+      </div>
+    </header>
+
+    <div class="ipd-hero-content">
+      <h1 class="ipd-hero-title ipd-hero-title--center">CFTV Profissional</h1>
+
+      <div class="ipd-hero-grid">
+
+        <div class="ipd-hero-left">
+          <div class="ipd-hero-card">
+            <p>
+              Monitoramento via CFTV com planos claros, suporte técnico ilimitado e opção de evolução para IA.
+              No poste de monitoramento 24h (IA), inclui integração com a polícia e órgãos governamentais (conforme protocolo).
+            </p>
+
+            <div class="ipd-cftv-bullets">
+              <div class="ipd-cftv-bullet">• Visualização pelo aplicativo</div>
+              <div class="ipd-cftv-bullet">• Suporte técnico ilimitado</div>
+              <div class="ipd-cftv-bullet">• Opções com IA</div>
+              <div class="ipd-cftv-bullet">• Expansível (cresce com você)</div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="ipd-hero-right">
+          <div class="ipd-cftv-pricebox">
+            <h3>PLANOS DE CFTV</h3>
+            <p class="ipd-cftv-pricebox-sub">Escolha o nível de preço e peça no WhatsApp.</p>
+
+            <div class="ipd-cftv-pricebox-grid">
+              <a class="ipd-cftv-mini" target="_blank" rel="noopener" href="https://wa.link/lzxxep">
+                <span class="ipd-cftv-mini-title">
+                  CFTV BÁSICO
+                  <span class="ipd-level">Nível: Básico</span>
+                </span>
+                <span class="ipd-cftv-mini-price">R$ <strong>38,90</strong> / mês</span>
+              </a>
+
+              <a class="ipd-cftv-mini ipd-cftv-mini--highlight" target="_blank" rel="noopener" href="https://wa.link/lzxxep">
+                <span class="ipd-cftv-mini-title">
+                  CFTV COM IA
+                  <span class="ipd-level ipd-level--orange">Nível: IA</span>
+                </span>
+                <span class="ipd-cftv-mini-price">R$ <strong>89,90</strong> / mês</span>
+              </a>
+
+              <a class="ipd-cftv-mini" target="_blank" rel="noopener" href="https://wa.link/lzxxep">
+                <span class="ipd-cftv-mini-title">
+                  POSTE 24H (IA)
+                  <span class="ipd-level ipd-level--orange">Nível: Premium</span>
+                </span>
+                <span class="ipd-cftv-mini-price"><strong>Valor: a consultar</strong></span>
+              </a>
+            </div>
+
+            <a class="ipd-cftv-whats" target="_blank" rel="noopener" href="https://wa.link/lzxxep">
+              Falar no WhatsApp →
+            </a>
+
+            <div class="ipd-cftv-note">
+              Taxa de instalação: <strong>a consultar</strong> (peça sua visita técnica).<br>
+              Poste/infraestrutura: <strong>sob projeto</strong> (a consultar).<br>
+              Opcionais do poste: leitura de placa, gravação em nuvem e patrulhamento (valor adicional).
+            </div>
+
+            <div class="ipd-cftv-phone">
+              Ligue agora <strong>+55 800 800 4411</strong>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ================= INTRO ================= -->
+  <section class="ipd-article" id="intro">
+    <div class="ipd-article-inner">
+      <div class="ipd-article-content">
+        <p class="ipd-article-text">
+          Do básico ao inteligente: planos de CFTV com suporte técnico ilimitado e opções com IA.
+          No poste de monitoramento 24h (IA), é possível integrar com a polícia e órgãos governamentais (conforme protocolo),
+          com opcionais sob demanda do cliente.
+        </p>
+
+        <div class="ipd-cftv-intro-cta">
+          <a class="ipd-btn ipd-btn--orange ipd-btn--pill" href="https://ipdetroit.com/#home" target="_blank" rel="noopener">🧮 Calcular na Home</a>
+          <a class="ipd-btn ipd-btn--ghost ipd-btn--pill" href="https://wa.link/lzxxep" target="_blank" rel="noopener">WhatsApp</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SERVIÇOS ================= -->
+  <section class="ipd-services" id="servicos-cftv">
+    <article class="ipd-service-card">
+      <div class="ipd-card">
+        <h3>Instalação Profissional</h3>
+        <p>Instalação completa com padrão técnico: posicionamento, passagem, acabamento e configuração do acesso no aplicativo.</p>
+      </div>
+      <div class="ipd-media">
+        <span class="ipd-number">01</span>
+        <img src="http://ipdetroit.com/wp-content/uploads/2025/12/photo-1665655034566-d0f219bd23b3.jpeg" alt="">
+      </div>
+    </article>
+
+    <article class="ipd-service-card">
+      <div class="ipd-card">
+        <h3>Suporte Ilimitado</h3>
+        <p>Chamados e suporte técnico ilimitado conforme plano, com ajustes e orientações para manter o sistema estável.</p>
+      </div>
+      <div class="ipd-media">
+        <span class="ipd-number">02</span>
+        <img src="http://ipdetroit.com/wp-content/uploads/2025/12/photo-1558002038-1055907df827.jpeg" alt="">
+      </div>
+    </article>
+
+    <article class="ipd-service-card">
+      <div class="ipd-card">
+        <h3>Poste 24H (IA) — Sob Projeto</h3>
+        <p>Integração com polícia e órgãos governamentais (conforme protocolo). Opcionais: leitura de placa, nuvem e patrulhamento (valor adicional).</p>
+      </div>
+      <div class="ipd-media">
+        <span class="ipd-number">03</span>
+        <img src="http://ipdetroit.com/wp-content/uploads/2025/12/photo-1611506583390-abc0fbf28865.jpeg" alt="">
+      </div>
+    </article>
+  </section>
+
+  <!-- ================= PREÇOS ================= -->
+  <section class="ipd-plans-bleed" id="precos">
+    <div class="ipd-plans-wrap">
+
+      <div class="ipd-plans-title">
+        <h2>Planos de Monitoramento via CFTV</h2>
+        <p>Valores mensais e nível de preço (básico / IA / premium).</p>
+      </div>
+
+      <div class="ipd-table-scroll">
+        <table class="ipd-plans-table ipd-cftv-table">
+          <thead>
+            <tr>
+              <th class="col-feature">Plano</th>
+              <th class="col-plan">O que inclui</th>
+              <th class="col-plan">Nível</th>
+              <th class="col-plan">Valor</th>
+              <th class="col-plan">Ação</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td class="col-feature">
+                <strong>CFTV BÁSICO</strong><br>
+                <small>Monitoramento via CFTV</small>
+              </td>
+              <td class="ipd-cftv-td-left">
+                • 01 câmera<br>
+                • Cartão de memória<br>
+                • Suporte técnico ilimitado
+              </td>
+              <td><strong>Básico</strong></td>
+              <td><strong>R$ 38,90/mês</strong></td>
+              <td><a class="ipd-btn-table" target="_blank" rel="noopener" href="https://wa.link/lzxxep">WhatsApp</a></td>
+            </tr>
+
+            <tr>
+              <td class="col-feature">
+                <strong>CFTV COM IA</strong><br>
+                <small>Monitoramento com inteligência</small>
+              </td>
+              <td class="ipd-cftv-td-left">
+                • 01 câmera com IA<br>
+                • Cartão de memória<br>
+                • Suporte técnico ilimitado
+              </td>
+              <td><strong>IA</strong></td>
+              <td><strong>R$ 89,90/mês</strong></td>
+              <td><a class="ipd-btn-table" target="_blank" rel="noopener" href="https://wa.link/lzxxep">WhatsApp</a></td>
+            </tr>
+
+            <tr>
+              <td class="col-feature">
+                <strong>POSTE 24H (IA)</strong><br>
+                <small>Cidade conectada</small>
+              </td>
+              <td class="ipd-cftv-td-left">
+                • 01 câmera com IA<br>
+                • Cartão de memória<br>
+                • Visualização via aplicativo<br>
+                • Suporte técnico ilimitado<br>
+                • Integração com a polícia e órgãos governamentais (conforme protocolo)<br>
+                <em>Opcionais do cliente:</em> leitura de placa, gravação em nuvem e patrulhamento (valor adicional).
+              </td>
+              <td><strong>Premium</strong></td>
+              <td><strong>A consultar</strong></td>
+              <td><a class="ipd-btn-table" target="_blank" rel="noopener" href="https://wa.link/lzxxep">WhatsApp</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="ipd-plans-footnote">
+        Taxa de instalação de qualquer sistema (CFTV/alarme): <strong>a consultar</strong> — peça sua visita técnica.
+        Poste/infraestrutura sob projeto (a consultar). Leitura de placa, nuvem e patrulhamento: opcionais com valor adicional.
+      </div>
+
+      <div class="ipd-plans-cta">
+        <a class="ipd-btn-plan" target="_blank" rel="noopener" href="https://wa.link/lzxxep">
+          Solicitar orçamento de CFTV →
+        </a>
+      </div>
+
+      <div class="ipd-plans-cta" style="margin-top:14px;">
+        <a class="ipd-btn ipd-btn--ghost" href="https://ipdetroit.com/#home" target="_blank" rel="noopener">
+          🧮 Calcular na Home →
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= FAQ ================= -->
+  <section class="ipd-cftv-faq" id="faq">
+    <div class="ipd-cftv-wrap">
+      <h2 class="ipd-cftv-h2">Dúvidas rápidas</h2>
+
+      <details class="ipd-cftv-qa">
+        <summary>O suporte técnico é ilimitado?</summary>
+        <div class="ipd-cftv-a">Sim. Nos planos de CFTV, o suporte técnico é ilimitado (conforme condições do plano).</div>
+      </details>
+
+      <details class="ipd-cftv-qa">
+        <summary>O poste tem valor fixo?</summary>
+        <div class="ipd-cftv-a">O poste de monitoramento 24h (IA) é sob projeto. O valor é a consultar, conforme infraestrutura e cenário.</div>
+      </details>
+
+      <details class="ipd-cftv-qa">
+        <summary>O que é opcional no poste?</summary>
+        <div class="ipd-cftv-a">Leitura de placa, gravação em nuvem e patrulhamento são opcionais do cliente (com valor adicional).</div>
+      </details>
+
+      <details class="ipd-cftv-qa">
+        <summary>A taxa de instalação já está inclusa?</summary>
+        <div class="ipd-cftv-a">Não. A taxa de instalação é a consultar — peça sua visita técnica.</div>
+      </details>
+
+      <div class="ipd-cftv-intro-cta" style="margin-top:26px;">
+        <a class="ipd-btn ipd-btn--orange" href="https://ipdetroit.com/#home" target="_blank" rel="noopener">🧮 Calcular na Home</a>
+        <a class="ipd-btn ipd-btn--ghost" href="https://wa.link/lzxxep" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+
+    </div>
+  </section>
+
+</div>
