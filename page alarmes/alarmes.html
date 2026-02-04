@@ -1,0 +1,898 @@
+<!-- =====================================================
+     IPDETROIT • ALARMES — CÓDIGO COMPLETO (NO PADRÃO DA HOME)
+     (cole TUDO no módulo de código)
+===================================================== -->
+
+<style>
+/* =====================================================
+   IPDETROIT • ALARMES — CSS COMPLETO (NO PADRÃO DA HOME)
+===================================================== */
+
+/* anti-barrinha / anti-overflow */
+html, body { max-width: 100%; overflow-x: hidden; }
+.ipd-alarmes-page, .ipd-alarmes-page * { box-sizing: border-box; }
+.ipd-alarmes-page img { max-width: 100%; height: auto; display: block; }
+
+/* =====================================================
+   HERO BASE (igual home)
+===================================================== */
+.ipd-alarmes-page .ipd-hero{
+  position:relative;
+  width:100vw;
+  min-height:100vh;
+  margin-left:calc(50% - 50vw);
+  margin-right:calc(50% - 50vw);
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+/* BACKGROUND */
+.ipd-alarmes-page .ipd-hero-bg{ position:absolute; inset:0; z-index:1; }
+.ipd-alarmes-page .ipd-hero-bg img{ width:100%; height:100%; object-fit:cover; }
+.ipd-alarmes-page .ipd-hero-overlay{
+  position:absolute; inset:0; z-index:2;
+  background: rgba(30, 35, 75, 0.65);
+}
+
+/* HEADER */
+.ipd-alarmes-page .ipd-header--inside-hero{
+  position:absolute;
+  top:0; left:50%;
+  transform:translateX(-50%);
+  width:100vw;
+  z-index:4;
+}
+.ipd-alarmes-page .ipd-header__inner{
+  max-width:1400px;
+  margin:0 auto;
+  padding:28px 32px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+}
+.ipd-alarmes-page .ipd-header__logo img{ height:44px; }
+.ipd-alarmes-page .ipd-header__nav{
+  display:flex;
+  gap:40px;
+  flex-wrap:wrap;
+}
+.ipd-alarmes-page .ipd-header__nav a{
+  color:#fff;
+  text-decoration:none;
+  font-size:16px;
+}
+.ipd-alarmes-page .ipd-header__actions{
+  display:flex;
+  gap:16px;
+  flex-wrap:wrap;
+}
+
+/* BOTÕES */
+.ipd-alarmes-page .ipd-btn{
+  display:inline-flex;
+  align-items:center;
+  padding:10px 22px;
+  border-radius:999px;
+  font-weight:600;
+  text-decoration:none;
+  border:0;
+}
+.ipd-alarmes-page .ipd-btn--primary{
+  background:#ffffff;
+  color:#F08723;
+  box-shadow: 0 10px 22px rgba(0,0,0,0.18);
+}
+.ipd-alarmes-page .ipd-btn--ghost{
+  background:rgba(255,255,255,.10);
+  color:#fff;
+  border:1px solid rgba(255,255,255,.18);
+  backdrop-filter: blur(10px);
+}
+.ipd-alarmes-page .ipd-btn--orange{
+  background:#F08723;
+  color:#fff;
+  box-shadow:0 12px 28px rgba(240,135,35,0.35);
+}
+.ipd-alarmes-page .ipd-btn--pill{
+  padding:10px 16px;
+  font-size:13px;
+  font-weight:900;
+}
+
+/* HEADER MOBILE */
+@media (max-width: 768px){
+  .ipd-alarmes-page .ipd-header--inside-hero{
+    left:0;
+    transform:none;
+    width:100%;
+  }
+  .ipd-alarmes-page .ipd-header__inner{
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    padding:20px 16px;
+    gap:12px;
+  }
+  .ipd-alarmes-page .ipd-header__nav{ display:none; }
+  .ipd-alarmes-page .ipd-header__actions{ width:100%; justify-content:center; }
+  .ipd-alarmes-page .ipd-header__actions a:first-child{ display:none; }
+  .ipd-alarmes-page .ipd-header__actions a:last-child{
+    font-size:14px;
+    padding:10px 18px;
+    border-radius:999px;
+    background:#ffffff;
+    color:#F08723;
+    box-shadow:0 6px 18px rgba(240,135,35,0.35);
+  }
+}
+
+/* CONTEÚDO HERO */
+.ipd-alarmes-page .ipd-hero-content{
+  position:relative;
+  z-index:3;
+  max-width:1200px;
+  width:100%;
+  padding:0 24px;
+  text-align:center;
+  margin-top:160px;
+}
+
+.ipd-alarmes-page .ipd-hero-title{
+  font-size:64px;
+  font-weight:500;
+  color:#ffffff;
+  margin:0;
+}
+.ipd-alarmes-page .ipd-hero-title--center{ margin-bottom:56px; }
+
+/* GRID */
+.ipd-alarmes-page .ipd-hero-grid{
+  display:grid;
+  grid-template-columns:1.1fr 0.9fr;
+  gap:48px;
+  align-items:center;
+}
+.ipd-alarmes-page .ipd-hero-left{ display:flex; justify-content:flex-start; }
+.ipd-alarmes-page .ipd-hero-right{ display:flex; justify-content:flex-end; }
+
+/* CARD ESQUERDA */
+.ipd-alarmes-page .ipd-hero-card{
+  background:#1E234B;
+  padding:48px;
+  border-radius:18px;
+  box-shadow:0 30px 80px rgba(0,0,0,0.45);
+  text-align:left;
+}
+.ipd-alarmes-page .ipd-hero-card p{
+  color:#fff;
+  font-size:18px;
+  line-height:1.6;
+  margin:0 0 18px;
+}
+
+/* bullets */
+.ipd-alarmes-page .ipd-al-bullets{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:10px 14px;
+  margin: 18px 0 0;
+}
+.ipd-alarmes-page .ipd-al-bullet{
+  color:#ffffff;
+  opacity:.92;
+  font-size:14px;
+  line-height:1.35;
+}
+
+/* CAIXA PREÇOS (no lugar do form) */
+.ipd-alarmes-page .ipd-al-pricebox{
+  background:#fff;
+  border-radius:20px;
+  padding:32px 28px;
+  max-width:420px;
+  width:100%;
+  text-align:center;
+  box-shadow:0 30px 80px rgba(0,0,0,0.45);
+}
+.ipd-alarmes-page .ipd-al-pricebox h3{
+  margin:0;
+  color:#091844;
+  font-weight:900;
+  letter-spacing:.4px;
+}
+.ipd-alarmes-page .ipd-al-pricebox-sub{
+  margin:10px 0 18px;
+  color:#1E234B;
+  opacity:.85;
+  font-size:14px;
+}
+.ipd-alarmes-page .ipd-al-pricebox-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:10px;
+  margin-bottom:14px;
+}
+.ipd-alarmes-page .ipd-al-mini{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+  text-decoration:none;
+  padding:14px 14px;
+  border-radius:16px;
+  border:1px solid #e8e8e8;
+  background:#fafafa;
+  transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+  text-align:left;
+}
+.ipd-alarmes-page .ipd-al-mini:hover{
+  transform:translateY(-2px);
+  box-shadow:0 14px 28px rgba(0,0,0,0.12);
+  border-color:rgba(240,135,35,0.35);
+}
+.ipd-alarmes-page .ipd-al-mini-title{
+  color:#091844;
+  font-weight:900;
+  font-size:14px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+}
+.ipd-alarmes-page .ipd-al-mini-price{
+  color:#1E234B;
+  font-size:13px;
+  opacity:.92;
+}
+.ipd-alarmes-page .ipd-al-mini--highlight{
+  border-color:rgba(240,135,35,0.45);
+  background:rgba(240,135,35,0.08);
+}
+
+/* badge nível */
+.ipd-alarmes-page .ipd-level{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:6px 10px;
+  border-radius:999px;
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:.3px;
+  background:rgba(9,24,68,0.10);
+  color:#091844;
+  white-space:nowrap;
+}
+.ipd-alarmes-page .ipd-level--orange{
+  background:rgba(240,135,35,0.14);
+  color:#a24c05;
+}
+
+.ipd-alarmes-page .ipd-al-whats{
+  display:block;
+  background:#F08723;
+  color:#ffffff;
+  padding:16px;
+  border-radius:999px;
+  text-decoration:none;
+  font-weight:900;
+  box-shadow:0 10px 22px rgba(240,135,35,0.35);
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+.ipd-alarmes-page .ipd-al-whats:hover{
+  transform:translateY(-2px);
+  box-shadow:0 16px 30px rgba(240,135,35,0.45);
+}
+.ipd-alarmes-page .ipd-al-phone{
+  margin-top:12px;
+  color:#091844;
+  font-size:14px;
+}
+.ipd-alarmes-page .ipd-al-phone strong{ font-size:18px; }
+
+/* RESPONSIVO HERO */
+@media (max-width: 992px){
+  .ipd-alarmes-page .ipd-hero-title{ font-size:40px; }
+  .ipd-alarmes-page .ipd-hero-grid{
+    grid-template-columns:1fr;
+    gap:32px;
+  }
+  .ipd-alarmes-page .ipd-hero-left,
+  .ipd-alarmes-page .ipd-hero-right{
+    justify-content:center;
+  }
+  .ipd-alarmes-page .ipd-al-bullets{ grid-template-columns:1fr; }
+}
+
+/* ===== faixa intro (igual home) ===== */
+.ipd-alarmes-page .ipd-article{
+  position:relative;
+  width:100vw;
+  margin-left:calc(50% - 50vw);
+  margin-right:calc(50% - 50vw);
+  background-color:#1E234B;
+  padding:80px 0;
+  display:flex;
+  justify-content:center;
+}
+.ipd-alarmes-page .ipd-article-inner{
+  max-width:1600px;
+  width:100%;
+  padding:0 40px;
+}
+.ipd-alarmes-page .ipd-article-content{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+}
+.ipd-alarmes-page .ipd-article-text{
+  width:60%;
+  font-size:20px;
+  line-height:1.6;
+  text-align:center;
+  color:#FFEDF7;
+  margin:0 auto;
+}
+
+/* CTA da intro */
+.ipd-alarmes-page .ipd-al-intro-cta{
+  width:100%;
+  margin-top:22px;
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+@media (max-width: 992px){
+  .ipd-alarmes-page .ipd-article{ padding:60px 0; }
+  .ipd-alarmes-page .ipd-article-text{ width:100%; font-size:18px; }
+}
+
+/* ===== Serviços (3 cards iguais home) ===== */
+.ipd-alarmes-page .ipd-services{
+  width:100vw;
+  margin-left:calc(50% - 50vw);
+  margin-right:calc(50% - 50vw);
+  background:#1E234B;
+  padding:80px 64px;
+  display:flex;
+  gap:48px;
+  box-sizing:border-box;
+}
+
+.ipd-alarmes-page .ipd-service-card{
+  flex:1;
+  display:flex;
+  height:420px;
+  border-radius:28px;
+  overflow:hidden;
+  box-shadow:0 20px 60px rgba(0,0,0,0.35);
+}
+
+.ipd-alarmes-page .ipd-card{
+  width:50%;
+  background:#F08723;
+  padding:48px 40px;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+}
+.ipd-alarmes-page .ipd-card h3{
+  font-size:28px;
+  font-weight:900;
+  margin:0 0 16px;
+  color:#ffffff;
+}
+.ipd-alarmes-page .ipd-card p{
+  font-size:15px;
+  line-height:1.6;
+  color:#ffffff;
+  margin:0;
+}
+
+.ipd-alarmes-page .ipd-media{ width:50%; position:relative; overflow:hidden; }
+.ipd-alarmes-page .ipd-media img{ width:100%; height:100%; object-fit:cover; }
+.ipd-alarmes-page .ipd-number{
+  position:absolute;
+  top:16px; right:16px;
+  background:#ffffff;
+  color:#1E0A17;
+  padding:10px 14px;
+  border-radius:999px;
+  font-size:14px;
+  font-weight:900;
+}
+
+@media (max-width: 992px){
+  .ipd-alarmes-page .ipd-services{
+    flex-direction:column;
+    padding:48px 24px;
+  }
+  .ipd-alarmes-page .ipd-service-card{
+    flex-direction:column-reverse;
+    height:auto;
+  }
+  .ipd-alarmes-page .ipd-card{
+    width:100%;
+    padding:32px 24px;
+  }
+  .ipd-alarmes-page .ipd-media{
+    width:100%;
+    height:260px;
+  }
+}
+
+/* ===== PLANOS (tabela no padrão da img: Plano | Inclui | Nível | Valor | Ação) ===== */
+.ipd-alarmes-page .ipd-plans-bleed{
+  background:#1E234B;
+  padding:120px 0;
+  width:100vw;
+  margin-left:calc(50% - 50vw);
+  margin-right:calc(50% - 50vw);
+}
+.ipd-alarmes-page .ipd-plans-wrap{
+  max-width:1280px;
+  margin:0 auto;
+  padding:0 48px;
+  color:#ffffff;
+}
+.ipd-alarmes-page .ipd-plans-title{
+  text-align:center;
+  margin-bottom:56px;
+}
+.ipd-alarmes-page .ipd-plans-title h2{
+  font-size:42px;
+  color:#F08723;
+  margin:0 0 10px;
+}
+.ipd-alarmes-page .ipd-plans-title p{
+  color:#cfd6f1;
+  margin:0;
+}
+.ipd-alarmes-page .ipd-table-scroll{ overflow-x:auto; }
+
+.ipd-alarmes-page .ipd-plans-table{
+  width:100%;
+  max-width:1100px;
+  margin:0 auto;
+  background:#ffffff;
+  border:none !important;
+  outline:none !important;
+  border-radius:18px;
+  overflow:hidden;
+  border-collapse:collapse;
+}
+.ipd-alarmes-page .ipd-plans-table thead th{
+  background:#091844;
+  color:#ffffff;
+  border-bottom:none;
+}
+.ipd-alarmes-page .ipd-plans-table th,
+.ipd-alarmes-page .ipd-plans-table td{
+  padding:18px 16px;
+  text-align:center;
+  font-size:14px;
+  border-bottom:1px solid #e6e9f2;
+}
+
+/* colunas */
+.ipd-alarmes-page .col-feature{
+  text-align:left !important;
+  width:260px;
+  font-weight:900;
+  color:#000;
+}
+.ipd-alarmes-page .col-plan{ width:180px; }
+
+/* coluna "inclui" alinhada à esquerda */
+.ipd-alarmes-page .ipd-al-td-left{
+  text-align:left !important;
+  color:#111;
+  line-height:1.55;
+}
+
+/* botão */
+.ipd-alarmes-page .ipd-btn-table{
+  display:inline-block;
+  background:#F08723;
+  color:#ffffff;
+  padding:12px 28px;
+  border-radius:999px;
+  font-size:14px;
+  font-weight:900;
+  text-decoration:none;
+  transition:all .25s ease;
+  box-shadow:0 8px 20px rgba(240,135,35,.35);
+}
+.ipd-alarmes-page .ipd-btn-table:hover{
+  background:#ff9a3d;
+  transform:translateY(-2px);
+  box-shadow:0 18px 36px rgba(246, 137, 42, 0.45);
+}
+
+.ipd-alarmes-page .ipd-plans-cta{
+  width:100%;
+  display:flex;
+  justify-content:center;
+  margin-top:40px;
+}
+.ipd-alarmes-page .ipd-btn-plan{
+  background:#F6892A;
+  color:#ffffff;
+  font-size:18px;
+  font-weight:900;
+  padding:16px 36px;
+  border-radius:999px;
+  text-decoration:none;
+  transition:all 0.25s ease;
+  box-shadow:0 12px 28px rgba(246, 137, 42, 0.35);
+}
+.ipd-alarmes-page .ipd-btn-plan:hover{
+  background:#ff9a3d;
+  transform:translateY(-2px);
+  box-shadow:0 18px 36px rgba(246, 137, 42, 0.45);
+}
+
+@media (max-width: 992px){
+  .ipd-alarmes-page .ipd-plans-wrap{ padding:0 24px; }
+  .ipd-alarmes-page .ipd-plans-title h2{ font-size:32px; }
+}
+
+/* ===== FAQ ===== */
+.ipd-alarmes-page .ipd-al-faq{
+  width:100vw;
+  margin-left:calc(50% - 50vw);
+  margin-right:calc(50% - 50vw);
+  background:#1E234B;
+  padding:90px 0;
+}
+.ipd-alarmes-page .ipd-al-wrap{
+  max-width:1000px;
+  margin:0 auto;
+  padding:0 24px;
+}
+.ipd-alarmes-page .ipd-al-h2{
+  text-align:center;
+  color:#ffffff;
+  font-size:42px;
+  margin:0 0 30px;
+}
+.ipd-alarmes-page .ipd-al-qa{
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 18px;
+  padding: 6px 18px;
+  margin: 12px 0;
+}
+.ipd-alarmes-page .ipd-al-qa summary{
+  cursor:pointer;
+  list-style:none;
+  padding: 16px 0;
+  font-weight:900;
+  color:#ffffff;
+}
+.ipd-alarmes-page .ipd-al-qa summary::-webkit-details-marker{ display:none; }
+.ipd-alarmes-page .ipd-al-a{
+  padding: 0 0 16px;
+  color:#e6e8ff;
+  line-height:1.6;
+}
+@media (max-width: 480px){
+  .ipd-alarmes-page .ipd-al-h2{ font-size:30px; }
+}
+
+/* =====================================================
+   FIX DEFINITIVO: FORÇAR TEXTO ESCURO NO TBODY (evita “fonte branca”)
+===================================================== */
+.ipd-alarmes-page .ipd-plans-table tbody td{ color:#111 !important; }
+.ipd-alarmes-page .ipd-plans-table tbody td.col-feature,
+.ipd-alarmes-page .ipd-plans-table tbody td.col-feature *{ color:#000 !important; }
+.ipd-alarmes-page .ipd-plans-table tbody td small{ color:#333 !important; opacity:1 !important; }
+.ipd-alarmes-page .ipd-plans-table tbody td.ipd-al-td-left,
+.ipd-alarmes-page .ipd-plans-table tbody td.ipd-al-td-left *{ color:#111 !important; }
+.ipd-alarmes-page .ipd-plans-table tbody a{ color:inherit !important; }
+</style>
+
+<div class="ipd-alarmes-page">
+
+  <!-- HERO -->
+  <section class="ipd-hero" id="topo">
+
+    <div class="ipd-hero-bg">
+      <img src="http://ipdetroit.com/wp-content/uploads/2025/12/photo-1558002038-1055907df827.jpeg" alt="Alarmes IPDetroit">
+      <div class="ipd-hero-overlay"></div>
+    </div>
+
+    <header class="ipd-header ipd-header--inside-hero">
+      <div class="ipd-header__inner">
+
+        <div class="ipd-header__logo">
+          <a href="https://ipdetroit.com/" aria-label="Voltar para Home">
+            <img src="http://ipdetroit.com/wp-content/uploads/2025/10/Ativo-23.png" alt="IPDetroit">
+          </a>
+        </div>
+
+        <nav class="ipd-header__nav" aria-label="Navegação Alarmes">
+          <a href="https://ipdetroit.com/">Home</a>
+          <a href="#intro">Sobre</a>
+          <a href="#planos-alarmes">Planos</a>
+          <a href="#faq">Dúvidas</a>
+        </nav>
+
+        <div class="ipd-header__actions">
+          <a href="https://wa.link/yqm257" target="_blank" rel="noopener" class="ipd-btn ipd-btn--primary">
+            → Solicitar Orçamento
+          </a>
+        </div>
+
+      </div>
+    </header>
+
+    <div class="ipd-hero-content">
+      <h1 class="ipd-hero-title ipd-hero-title--center">Alarmes & Monitoramento</h1>
+
+      <div class="ipd-hero-grid">
+
+        <div class="ipd-hero-left">
+          <div class="ipd-hero-card">
+            <p>
+              Alarme inteligente, monitoramento remoto e suporte técnico.
+              Integração com CFTV (circuito fechado de TV) e automação, para você
+              controlar tudo no celular — com resposta rápida quando precisar.
+            </p>
+
+            <div class="ipd-al-bullets">
+              <div class="ipd-al-bullet">• Sensores (abertura, presença, barreira)</div>
+              <div class="ipd-al-bullet">• Sirene + teclado + app</div>
+              <div class="ipd-al-bullet">• Integração com CFTV e automação</div>
+              <div class="ipd-al-bullet">• Suporte técnico e manutenção</div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="ipd-hero-right">
+          <div class="ipd-al-pricebox">
+            <h3>PREÇOS RÁPIDOS</h3>
+            <p class="ipd-al-pricebox-sub">Escolha um plano e peça no WhatsApp.</p>
+
+            <div class="ipd-al-pricebox-grid">
+              <a class="ipd-al-mini" target="_blank" rel="noopener" href="https://wa.link/yqm257">
+                <span class="ipd-al-mini-title">
+                  Básico sem patrulha
+                  <span class="ipd-level">Nível: Residencial</span>
+                </span>
+                <span class="ipd-al-mini-price">A partir de <strong>R$ 99/mês</strong></span>
+              </a>
+
+              <a class="ipd-al-mini ipd-al-mini--highlight" target="_blank" rel="noopener" href="https://wa.link/yqm257">
+                <span class="ipd-al-mini-title">
+                  Básico com patrulha
+                  <span class="ipd-level ipd-level--orange">Nível: Proteção+</span>
+                </span>
+                <span class="ipd-al-mini-price">A partir de <strong>R$ 199/mês</strong></span>
+              </a>
+
+              <a class="ipd-al-mini" target="_blank" rel="noopener" href="https://wa.link/yqm257">
+                <span class="ipd-al-mini-title">
+                  Empresas
+                  <span class="ipd-level">Nível: Empresarial</span>
+                </span>
+                <span class="ipd-al-mini-price">Sob projeto <strong>R$ ____</strong></span>
+              </a>
+
+              <a class="ipd-al-mini" target="_blank" rel="noopener" href="https://wa.link/yqm257">
+                <span class="ipd-al-mini-title">
+                  Postes IA (POE / Off-grid)
+                  <span class="ipd-level ipd-level--orange">Nível: Cidade</span>
+                </span>
+                <span class="ipd-al-mini-price">Sob projeto <strong>R$ ____</strong></span>
+              </a>
+            </div>
+
+            <a class="ipd-al-whats" target="_blank" rel="noopener" href="https://wa.link/yqm257">
+              Falar no WhatsApp →
+            </a>
+
+            <div class="ipd-al-phone">
+              Ligue agora <strong>+55 800 800 4411</strong>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+
+  <!-- INTRO -->
+  <section class="ipd-article" id="intro">
+    <div class="ipd-article-inner">
+      <div class="ipd-article-content">
+        <p class="ipd-article-text">
+          Alarmes profissionais com tecnologia moderna: você recebe alertas em tempo real,
+          e pode integrar com câmeras e automação para ter um sistema completo.
+        </p>
+
+        <div class="ipd-al-intro-cta">
+          <a class="ipd-btn ipd-btn--orange ipd-btn--pill" href="https://ipdetroit.com/#home" target="_blank" rel="noopener">🧮 Calcular na Home</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 CARDS -->
+  <section class="ipd-services" id="servicos-alarmes">
+    <article class="ipd-service-card">
+      <div class="ipd-card">
+        <h3>Instalação de Alarmes</h3>
+        <p>Projeto, instalação e configuração completa: sensores, sirene, teclado e app.</p>
+      </div>
+      <div class="ipd-media">
+        <span class="ipd-number">01</span>
+        <img src="http://ipdetroit.com/wp-content/uploads/2025/12/photo-1611506583390-abc0fbf28865.jpeg" alt="">
+      </div>
+    </article>
+
+    <article class="ipd-service-card">
+      <div class="ipd-card">
+        <h3>Manutenção & Suporte</h3>
+        <p>Diagnóstico, troca de componentes, ajustes e suporte técnico especializado.</p>
+      </div>
+      <div class="ipd-media">
+        <span class="ipd-number">02</span>
+        <img src="http://ipdetroit.com/wp-content/uploads/2025/12/photo-1529265895721-65945a176cff-1.jpeg" alt="">
+      </div>
+    </article>
+
+    <article class="ipd-service-card">
+      <div class="ipd-card">
+        <h3>Integração com CFTV</h3>
+        <p>Alarme + câmera: alertas, gravações, acesso remoto e ação coordenada.</p>
+      </div>
+      <div class="ipd-media">
+        <span class="ipd-number">03</span>
+        <img src="http://ipdetroit.com/wp-content/uploads/2025/12/photo-1673990063940-39bd84212f4b.jpeg" alt="">
+      </div>
+    </article>
+  </section>
+
+  <!-- PLANOS / TABELA (igual estilo da imagem: Plano | Inclui | Nível | Valor | Ação) -->
+  <section class="ipd-plans-bleed" id="planos-alarmes">
+    <div class="ipd-plans-wrap">
+
+      <div class="ipd-plans-title">
+        <h2>Planos de Alarmes</h2>
+        <p>Comparação rápida por nível e valor.</p>
+      </div>
+
+      <div class="ipd-table-scroll">
+        <table class="ipd-plans-table">
+          <thead>
+            <tr>
+              <th class="col-feature">Plano</th>
+              <th class="col-plan">O que inclui</th>
+              <th class="col-plan">Nível</th>
+              <th class="col-plan">Valor</th>
+              <th class="col-plan">Ação</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td class="col-feature">
+                <strong>BÁSICO</strong><br>
+                <small>Sem patrulha</small>
+              </td>
+              <td class="ipd-al-td-left">
+                • Monitoramento 24h<br>
+                • IA (detecção inteligente)<br>
+                • Aviso/acionamento à polícia (conforme protocolo)<br>
+                • Suporte técnico e manutenção
+              </td>
+              <td><strong>Residencial</strong></td>
+              <td><strong>R$ 194,50/mês</strong></td>
+              <td><a class="ipd-btn-table" target="_blank" rel="noopener" href="https://wa.link/yqm257">WhatsApp</a></td>
+            </tr>
+
+            <tr>
+              <td class="col-feature">
+                <strong>BÁSICO+</strong><br>
+                <small>Com patrulha</small>
+              </td>
+              <td class="ipd-al-td-left">
+                • Monitoramento 24h<br>
+                • IA (detecção inteligente)<br>
+                • Aviso/acionamento à polícia (conforme protocolo)<br>
+                • Patrulhamento / ronda (conforme operação)<br>
+                • Suporte técnico e manutenção
+              </td>
+              <td><strong>Proteção+</strong></td>
+              <td><strong>R$ 294,50/mês</strong></td>
+              <td><a class="ipd-btn-table" target="_blank" rel="noopener" href="https://wa.link/yqm257">WhatsApp</a></td>
+            </tr>
+
+            <tr>
+              <td class="col-feature">
+                <strong>EMPRESAS</strong><br>
+                <small>Plano corporativo</small>
+              </td>
+              <td class="ipd-al-td-left">
+                • Projeto sob medida<br>
+                • Integração com CFTV (circuito fechado de TV) e automação<br>
+                • Suporte técnico e manutenção<br>
+                • Possibilidade de locação (conforme cenário)
+              </td>
+              <td><strong>Empresarial</strong></td>
+              <td><strong>Sob projeto</strong></td>
+              <td><a class="ipd-btn-table" target="_blank" rel="noopener" href="https://wa.link/yqm257">WhatsApp</a></td>
+            </tr>
+
+            <tr>
+              <td class="col-feature">
+                <strong>POSTES IA</strong><br>
+                <small>POE / Off-grid</small>
+              </td>
+              <td class="ipd-al-td-left">
+                • Monitoramento 24h + IA<br>
+                • Integração com polícia e órgãos governamentais (conforme protocolo)<br>
+                • Locação de equipamentos (quando aplicável)<br>
+                • Off-grid (solar + bateria + 4G) no modelo Off-grid
+              </td>
+              <td><strong>Cidade</strong></td>
+              <td><strong>Sob projeto</strong></td>
+              <td><a class="ipd-btn-table" target="_blank" rel="noopener" href="https://wa.link/yqm257">WhatsApp</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="ipd-plans-cta">
+        <a class="ipd-btn-plan" target="_blank" rel="noopener" href="https://wa.link/yqm257">
+          Solicitar orçamento de alarmes →
+        </a>
+      </div>
+
+      <div class="ipd-plans-cta" style="margin-top:14px;">
+        <a class="ipd-btn ipd-btn--ghost" href="https://ipdetroit.com/#home" target="_blank" rel="noopener">
+          🧮 Calcular na Home →
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="ipd-al-faq" id="faq">
+    <div class="ipd-al-wrap">
+      <h2 class="ipd-al-h2">Dúvidas rápidas</h2>
+
+      <details class="ipd-al-qa">
+        <summary>Alarme funciona sem internet?</summary>
+        <div class="ipd-al-a">Sim. O alarme continua disparando. Para alertas no celular, depende da conexão (Wi-Fi/4G).</div>
+      </details>
+
+      <details class="ipd-al-qa">
+        <summary>Posso integrar com câmeras (CFTV)?</summary>
+        <div class="ipd-al-a">Sim. Integração permite correlacionar disparo do alarme com imagens/alertas do CFTV.</div>
+      </details>
+
+      <details class="ipd-al-qa">
+        <summary>Qual o melhor plano para minha casa/empresa?</summary>
+        <div class="ipd-al-a">Pelo WhatsApp você informa tamanho e necessidade (com/sem patrulha) e a gente indica o ideal.</div>
+      </details>
+
+      <div class="ipd-al-intro-cta" style="margin-top:26px;">
+        <a class="ipd-btn ipd-btn--orange" href="https://ipdetroit.com/#home" target="_blank" rel="noopener">🧮 Calcular na Home</a>
+        <a class="ipd-btn ipd-btn--ghost" href="https://wa.link/yqm257" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+
+    </div>
+  </section>
+
+</div>
